@@ -5,9 +5,9 @@ import {
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
-import { EndPoints } from "../../commons/EndPoints";
+import { EndPoints } from "../../commons/endPoints";
 import { tap, catchError } from "rxjs/operators";
-import { User } from "../../login/User";
+import {UserDto } from "../../domain/UserDto";
 import { AlertifyService } from "../alertifyService/alertify.service";
 
 @Injectable({
@@ -19,27 +19,26 @@ export class LoginService {
     private alertifyService: AlertifyService
   ) {}
 
-  // loginPath:string = EndPoints.login
 
-  login(user: User) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json",
-        Authorization: "Token",
-      }),
-    };
+  login(user: UserDto) {
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     "Content-Type": "application/json",
+    //     Authorization: "Token",
+    //   }),
+    // };
 
     this.http
-      .get<User>( "http://localhost:8080/login" + "?userName=" +user.userName + "&password=" +user.password, httpOptions)
+      .get<UserDto>( EndPoints.root +"/login" + "?userName=" +user.userName + "&password=" +user.password)
       .pipe(
         tap((data) => console.log(JSON.stringify(data))),
         catchError(this.handleError)
       )
       .subscribe((data) => {
         if (data.userName != null) {
-          this.alertifyService.success("HOŞGELDİNİZ");
+            this.alertifyService.success(data.globalMessage.confMessage);
         } else {
-          this.alertifyService.error("Kullanıcı adı veya Parola hatalı!");
+          this.alertifyService.error(data.globalMessage.errorMessage);
         }
       });
   }
