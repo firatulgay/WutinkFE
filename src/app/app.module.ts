@@ -8,12 +8,14 @@ import { LoginService } from './services/loginService/login.service';
 import { LoginGuard } from './login/login.guard';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { AlertifyService } from './services/alertifyService/alertify.service';
+import { LandingComponent } from './landing/landing.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent  ],
+    LoginComponent,
+    LandingComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

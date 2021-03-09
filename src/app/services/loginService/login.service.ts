@@ -9,6 +9,7 @@ import { EndPoints } from "../../commons/endPoints";
 import { tap, catchError } from "rxjs/operators";
 import {UserDto } from "../../domain/UserDto";
 import { AlertifyService } from "../alertifyService/alertify.service";
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: "root",
@@ -16,31 +17,33 @@ import { AlertifyService } from "../alertifyService/alertify.service";
 export class LoginService {
   constructor(
     private http: HttpClient,
-    private alertifyService: AlertifyService
+    private alertifyService: AlertifyService,
+    private router:Router
   ) {}
 
+   isLoggedIn=false;
 
   login(user: UserDto) {
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     "Content-Type": "application/json",
-    //     Authorization: "Token",
-    //   }),
-    // };
 
-    this.http
-      .get<UserDto>( EndPoints.root +"/login" + "?userName=" +user.userName + "&password=" +user.password)
-      .pipe(
-        tap((data) => console.log(JSON.stringify(data))),
-        catchError(this.handleError)
-      )
+    this.http.get<UserDto>( EndPoints.root +"/login" + "?userName=" +user.userName + "&password=" +user.password)
+      .pipe(tap((data) => console.log(JSON.stringify(data))),
+        catchError(this.handleError))
       .subscribe((data) => {
+
         if (data.userName != null) {
-            this.alertifyService.success(data.globalMessage.confMessage);
-        } else {
+          localStorage.setItem("isLoggedIn","true")
+          this.alertifyService.success(data.globalMessage.confMessage);
+          this.router.navigate(['home']);
+          this.isLoggedIn=true;
+        }else {
           this.alertifyService.error(data.globalMessage.errorMessage);
         }
       });
+  }
+
+  logOut(){
+    localStorage.removeItem("isLoggedIn");
+    this.isLoggedIn=false;
   }
 
   private handleError(err: HttpErrorResponse) {

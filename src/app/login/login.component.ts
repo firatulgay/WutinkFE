@@ -4,6 +4,7 @@ import { EndPoints } from '../commons/endPoints';
 import { AlertifyService } from '../services/alertifyService/alertify.service';
 import { LoginService } from '../services/loginService/login.service';
 import { UserDto } from '../domain/UserDto';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
+    private router:Router
   ) {}
 
    private loginForm: FormGroup;

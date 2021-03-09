@@ -16,7 +16,6 @@ body {
   max-width: 330px;
   padding: 15px;
   margin:auto;
-  margin-top: 10%;
 }
 .form-signin .checkbox {
   font-weight: 400;
@@ -45,7 +44,16 @@ body {
 .form-signin .submitBtn {
     width: 100%;
   }
+.login-img{
+  width: 100%;
+  max-width: 350px;
+  margin:auto;
+}
+.login-img .img{
+    height: 350px;
+    /*width: 100%;*/
+}
 
-  .form-signin .headerText{
-    text-align: center;
-  }
+.form-signin .forgetPass{
+  text-align: center;
+}
