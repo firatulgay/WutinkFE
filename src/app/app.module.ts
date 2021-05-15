@@ -10,8 +10,7 @@ import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { AlertifyService } from './services/alertifyService/alertify.service';
 import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
-
-
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,7 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [LoginService,LoginGuard,AlertifyService],
+  providers: [LoginService,LoginGuard,AlertifyService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

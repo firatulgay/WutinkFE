@@ -10,6 +10,8 @@ import { tap, catchError } from "rxjs/operators";
 import {UserDto } from "../../domain/UserDto";
 import { AlertifyService } from "../alertifyService/alertify.service";
 import {Router} from '@angular/router';
+import {CookieService} from 'ngx-cookie-service';
+import {AuthDto} from '../../domain/AuthDto';
 
 @Injectable({
   providedIn: "root",
@@ -18,31 +20,45 @@ export class LoginService {
   constructor(
     private http: HttpClient,
     private alertifyService: AlertifyService,
-    private router:Router
+    private router:Router,
+    private cookieService: CookieService
   ) {}
 
    isLoggedIn=false;
 
   login(user: UserDto) {
 
-    this.http.get<UserDto>( EndPoints.root +"/login" + "?userName=" +user.userName + "&password=" +user.password)
-      .pipe(tap((data) => console.log(JSON.stringify(data))),
-        catchError(this.handleError))
-      .subscribe((data) => {
+    let auth = this.cookieService.get('jwtToken');
+    if (auth == null || auth === ""){
+     auth = "Basic ZmlyYXQ6MTIzNDU"
+        // 'Basic ' + user.userName +':'+ user.password
+    }
 
-        if (data.userName != null) {
-          localStorage.setItem("isLoggedIn","true")
-          this.alertifyService.success(data.globalMessage.confMessage);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        Authorization: auth
+      })
+    };
+
+    this.http.post<AuthDto>( EndPoints.root +"/login","",httpOptions)
+      .pipe(tap((authResponse) => console.log(JSON.stringify(authResponse))),
+        catchError(this.handleError))
+      .subscribe((authResponse) => {
+
+        if (authResponse.token != null) {
+          this.cookieService.set('jwtToken',authResponse.token);
+          this.alertifyService.success("HOŞGELDİNİZ");
           this.router.navigate(['home']);
           this.isLoggedIn=true;
         }else {
-          this.alertifyService.error(data.globalMessage.errorMessage);
+          this.alertifyService.error("Kullanıcı Adı Veya Parola Hatalı!");
         }
       });
   }
 
   logOut(){
-    localStorage.removeItem("isLoggedIn");
+    this.cookieService.delete('jwtToken');
     this.isLoggedIn=false;
   }
 
