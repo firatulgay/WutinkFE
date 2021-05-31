@@ -11,13 +11,17 @@ import { AlertifyService } from './services/alertifyService/alertify.service';
 import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 import {CookieService} from 'ngx-cookie-service';
+import { CategoryComponent } from './category/category.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     LandingComponent,
-    HomeComponent  ],
+    HomeComponent,
+    CategoryComponent,
+    NavComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
