@@ -22,7 +22,16 @@ export class CategoryComponent implements OnInit {
   }
 
   getMainCategoriess(){
-    this.categoryService.getMainCategories().subscribe(data => console.log(data + " wutink"))
+    this.categoryService.getMainCategories().subscribe(data =>{
+      this.mainCategories = data;
+      let otherCategory = this.mainCategories.find(value => value.name ==="Diğer");
+      let indexOfOther= this.mainCategories.indexOf(this.mainCategories.find(value => value.name ==="Diğer"));
+      if (indexOfOther > -1) {
+        this.mainCategories.splice(indexOfOther, 1);
+      }
+
+      this.mainCategories.push(otherCategory);
+    });
   }
 
 }
