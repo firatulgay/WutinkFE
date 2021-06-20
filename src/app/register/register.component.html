@@ -1,0 +1,30 @@
+  <div class="body">
+
+    <div class="form-signin">
+      <h1>Sign Up</h1>
+      <p>It's quick and easy!</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="register()" class="form-signin">
+      <div class="form-group">
+        <input type="text" formControlName="userName" name="userName" class="form-control" id="userName" placeholder="Username" [ngClass]="
+      {'is-invalid': registerForm.get('userName').hasError('required') && registerForm.get('userName').dirty && registerForm.get('userName').invalid}">
+        <div class="invalid-feedback">
+          Username is required!
+        </div>
+      </div>
+
+      <div class="form-group has-danger">
+        <input type="password" formControlName="password" name="password" class="form-control" id="password" placeholder="Password" [ngClass]="
+      {'is-invalid': registerForm.get('password').hasError('required') && registerForm.get('password').dirty && registerForm.get('password').invalid}" >
+        <div class="invalid-feedback">
+          Password is required!
+        </div>
+      </div>
+
+      <br><br>
+      <button type="submit" class="btn btn-outline-success , submitBtn">Signup</button>
+
+    </form>
+
+  </div>

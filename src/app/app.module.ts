@@ -13,6 +13,9 @@ import { HomeComponent } from './home/home.component';
 import {CookieService} from 'ngx-cookie-service';
 import { CategoryComponent } from './category/category.component';
 import { NavComponent } from './nav/nav.component';
+import { RegisterComponent } from './register/register.component';
+import {MatDialogModule} from "@angular/material";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,13 +24,16 @@ import { NavComponent } from './nav/nav.component';
     LandingComponent,
     HomeComponent,
     CategoryComponent,
-    NavComponent  ],
+    NavComponent,
+    RegisterComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [LoginService,LoginGuard,AlertifyService,CookieService],
   bootstrap: [AppComponent]

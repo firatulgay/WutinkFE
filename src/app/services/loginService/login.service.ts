@@ -12,6 +12,7 @@ import { AlertifyService } from "../alertifyService/alertify.service";
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {AuthDto} from '../../domain/AuthDto';
+import {MatDialog} from '@angular/material';
 
 @Injectable({
   providedIn: "root",
@@ -21,18 +22,14 @@ export class LoginService {
     private http: HttpClient,
     private alertifyService: AlertifyService,
     private router:Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private matDialog: MatDialog
   ) {}
 
    isLoggedIn=false;
 
   login(user: UserDto) {
-
-    let auth = this.cookieService.get('jwtToken');
-    if (auth == null || auth === ""){
-     auth = "Basic ZmlyYXQ6MTIzNDU"
-        // 'Basic ' + user.userName +':'+ user.password
-    }
+    let auth = 'Basic ' + btoa(user.userName + ":"+ user.password)
 
     const httpOptions = {
       headers: new HttpHeaders({
@@ -60,6 +57,26 @@ export class LoginService {
   logOut(){
     this.cookieService.delete('jwtToken');
     this.isLoggedIn=false;
+  }
+
+  register(user : UserDto){
+    this.http.post<AuthDto>( EndPoints.root +"/register",user)
+      .pipe(tap((authResponse) => console.log(JSON.stringify(authResponse))),
+        catchError(this.handleError))
+      .subscribe((authResponse) => {
+
+        if (authResponse.success) {
+          this.cookieService.set('jwtToken',authResponse.token);
+          this.alertifyService.success(authResponse.globalMessage.confMessage);
+          this.router.navigate(['home']);
+          this.isLoggedIn=true;
+          this.matDialog.closeAll();
+
+        }else {
+          this.alertifyService.error(authResponse.globalMessage.errorMessage);
+        }
+      });
+
   }
 
   private handleError(err: HttpErrorResponse) {

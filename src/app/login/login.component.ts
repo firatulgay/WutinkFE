@@ -5,6 +5,8 @@ import { AlertifyService } from '../services/alertifyService/alertify.service';
 import { LoginService } from '../services/loginService/login.service';
 import { UserDto } from '../domain/UserDto';
 import {Router} from '@angular/router';
+import {RegisterComponent} from '../register/register.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private router:Router
+    private router:Router,
+    private matDialog: MatDialog
   ) {}
 
    private loginForm: FormGroup;
@@ -31,6 +34,24 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
+    });
+  }
+
+  openRegisterPopup(): void {
+    const dialogRef = this.matDialog.open(RegisterComponent, {
+      role: 'dialog',
+      height: '480px',
+      width: '480px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      const {fname, lname, email, password, avatar} = result;
+
+      if (result !== undefined) {
+        // this.loginService.SignUp(email, password, fname, lname, avatar);
+      }
+
+      return;
     });
   }
 
