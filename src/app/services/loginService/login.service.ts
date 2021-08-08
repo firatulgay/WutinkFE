@@ -44,7 +44,7 @@ export class LoginService {
       .subscribe((authResponse) => {
 
         if (authResponse.token != null) {
-          this.cookieService.set('jwtToken',authResponse.token);
+          this.cookieService.set('jwtSessionId',authResponse.token);
           this.alertifyService.success("HOŞGELDİNİZ");
           this.router.navigate(['home']);
           this.isLoggedIn=true;

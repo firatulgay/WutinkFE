@@ -16,6 +16,11 @@ import { NavComponent } from './nav/nav.component';
 import { RegisterComponent } from './register/register.component';
 import {MatDialogModule} from "@angular/material";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
 
 @NgModule({
   declarations: [
@@ -25,7 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     CategoryComponent,
     NavComponent,
-    RegisterComponent  ],
+    RegisterComponent ,],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,9 +38,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     ReactiveFormsModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost"],
+        disallowedRoutes: ["http://example.com/examplebadroute/"],
+      },
+    }),
   ],
-  providers: [LoginService,LoginGuard,AlertifyService,CookieService],
+  providers: [LoginService,LoginGuard,AlertifyService,CookieService,JwtModule,JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
