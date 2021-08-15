@@ -17,6 +17,8 @@ import { RegisterComponent } from './register/register.component';
 import {MatDialogModule} from "@angular/material";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
+import { ExperienceListingComponent } from './experience-listing/experience-listing.component';
+import {ExperienceService} from './services/experienceService/experience.service';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -30,7 +32,8 @@ export function tokenGetter() {
     HomeComponent,
     CategoryComponent,
     NavComponent,
-    RegisterComponent ,],
+    RegisterComponent,
+    ExperienceListingComponent ,],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -47,7 +50,7 @@ export function tokenGetter() {
       },
     }),
   ],
-  providers: [LoginService,LoginGuard,AlertifyService,CookieService,JwtModule,JwtHelperService],
+  providers: [LoginService,LoginGuard,AlertifyService,CookieService,JwtModule,JwtHelperService,ExperienceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

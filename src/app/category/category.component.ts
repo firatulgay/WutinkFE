@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoryService} from '../services/categoryService/category-service.service';
 import {CategoryDto} from '../domain/CategoryDto';
+import {Router} from '@angular/router';
+import {EndPoints} from '../commons/endPoints';
+import {ExperienceListingComponent} from '../experience-listing/experience-listing.component';
 
 @Component({
   selector: 'app-category',
@@ -12,16 +15,17 @@ import {CategoryDto} from '../domain/CategoryDto';
 export class CategoryComponent implements OnInit {
 
   constructor(
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private router:Router
   ) { }
 
   mainCategories: CategoryDto[];
 
   ngOnInit() {
-    this.getMainCategoriess();
+    this.getMainCategories();
   }
 
-  getMainCategoriess(){
+  getMainCategories(){
     this.categoryService.getMainCategories().subscribe(data =>{
       this.mainCategories = data;
       let otherCategory = this.mainCategories.find(value => value.name ==="Diğer");
@@ -32,6 +36,10 @@ export class CategoryComponent implements OnInit {
 
       this.mainCategories.push(otherCategory);
     });
+  }
+
+  categoryOnClick(name: string, id: number){
+    this.router.navigate(['experience/'+name+'/'+id])
   }
 
 }

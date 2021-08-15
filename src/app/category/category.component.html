@@ -9,7 +9,7 @@
     </ng-template>
 
     <div *ngFor="let mainCategory of mainCategories">
-      <a href="#" class="card education">
+      <button  (click)="categoryOnClick(mainCategory.name,mainCategory.id)"  class="card education">
         <div class="overlay"></div>
         <div class="circle">
 
@@ -44,7 +44,8 @@
           </svg>
         </div>
         <p>{{mainCategory.name}}</p>
-      </a>
+      </button>
+
     </div>
 
 
