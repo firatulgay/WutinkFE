@@ -46,7 +46,7 @@ export class LoginService {
         if (authResponse.token != null) {
           this.cookieService.set('jwtSessionId',authResponse.token);
           this.alertifyService.success("HOŞGELDİNİZ");
-          this.router.navigate(['home']);
+          this.router.navigate(['categories']);
           this.isLoggedIn=true;
         }else {
           this.alertifyService.error("Kullanıcı Adı Veya Parola Hatalı!");

@@ -22,7 +22,7 @@ export class ExperienceListingComponent implements OnInit {
 
     this.categoryName = this.activatedRoute.snapshot.params['categoryName'];
     this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
-
+    this.getAllExperiencesByCategoryId(this.categoryId);
   }
 
   categoryName : string;
@@ -37,13 +37,13 @@ export class ExperienceListingComponent implements OnInit {
 
   }
 
-  likeEvent(event: any){
+  likeEvent(event: any, experienceId: number){
     if (event.currentTarget.checked){
-      this.likeService.likeExperience(1,this.wutinkCookieService.getSessionUser()).subscribe(data => {
+      this.likeService.likeExperience(experienceId,this.wutinkCookieService.getSessionUser()).subscribe(data => {
       });
     }
     else {
-      this.likeService.unlikeExperience(1,this.wutinkCookieService.getSessionUser()).subscribe(data => {
+      this.likeService.unlikeExperience(experienceId,this.wutinkCookieService.getSessionUser()).subscribe(data => {
       });
     }
   }
