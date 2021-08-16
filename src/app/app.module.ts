@@ -8,7 +8,6 @@ import { LoginService } from './services/loginService/login.service';
 import { LoginGuard } from './login/login.guard';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { AlertifyService } from './services/alertifyService/alertify.service';
-import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 import {CookieService} from 'ngx-cookie-service';
 import { CategoryComponent } from './category/category.component';
@@ -28,7 +27,6 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     LoginComponent,
-    LandingComponent,
     HomeComponent,
     CategoryComponent,
     NavComponent,
