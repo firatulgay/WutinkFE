@@ -39,7 +39,7 @@ export class CategoryComponent implements OnInit {
   }
 
   categoryOnClick(name: string, id: number){
-    this.router.navigate(['experience/'+name+'/'+id])
+    this.router.navigate(['experience/c/'+id])
   }
 
 }

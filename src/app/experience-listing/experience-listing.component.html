@@ -16,7 +16,7 @@
           <i class="fa fa-eye icons"></i>
           <div id="main-content">
             <div>
-              <input type="checkbox" (change)="likeEvent($event,experience.id)" id="likeCheckBox {{experience.id}}" class="likeCheckBox" />
+              <input type="checkbox" (change)="likeEvent($event,experience.id)" id="likeCheckBox {{experience.id}}" class="likeCheckBox" />  <!-- id must be unique to select desired checkbox -->
               <label for="likeCheckBox {{experience.id}}">
                 <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
                   <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">

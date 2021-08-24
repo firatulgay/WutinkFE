@@ -20,12 +20,10 @@ export class ExperienceListingComponent implements OnInit {
 
   ngOnInit() {
 
-    this.categoryName = this.activatedRoute.snapshot.params['categoryName'];
     this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
     this.getAllExperiencesByCategoryId(this.categoryId);
   }
 
-  categoryName : string;
   categoryId : number;
   experienceList : ExperienceDto[];
 

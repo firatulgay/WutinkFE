@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import { ExperienceListingComponent } from './experience-listing/experience-listing.component';
 import {ExperienceService} from './services/experienceService/experience.service';
+import { ExperienceDetailComponent } from './experience-detail/experience-detail.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -31,7 +32,8 @@ export function tokenGetter() {
     CategoryComponent,
     NavComponent,
     RegisterComponent,
-    ExperienceListingComponent ,],
+    ExperienceListingComponent,
+    ExperienceDetailComponent ,],
   imports: [
     BrowserModule,
     AppRoutingModule,

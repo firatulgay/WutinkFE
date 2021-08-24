@@ -6,13 +6,16 @@ import {HomeComponent} from './home/home.component';
 import {CategoryComponent} from './category/category.component';
 import {RegisterComponent} from './register/register.component';
 import {ExperienceListingComponent} from './experience-listing/experience-listing.component';
+import {ExperienceDetailComponent} from './experience-detail/experience-detail.component';
 
 const routes: Routes = [
   {path:'login', component : LoginComponent},
   {path:'home', component : HomeComponent}, //canActivate:[LoginGuard] will be added later
   {path:'categories', component : CategoryComponent},
   {path:'register', component : RegisterComponent},
-  {path:'experience/:categoryName/:categoryId', component : ExperienceListingComponent}
+  {path:'experience/c/:categoryId', component : ExperienceListingComponent},
+  {path:'experience/e/:experienceId', component : ExperienceDetailComponent}
+
 
 ];
 
