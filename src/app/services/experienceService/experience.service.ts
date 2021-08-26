@@ -18,6 +18,11 @@ export class ExperienceService {
       .pipe(catchError(this.handleError));
   }
 
+  getExperienceById(experienceId : number):Observable<ExperienceDto>{
+    return  this.http.get<ExperienceDto>( EndPoints.root +"/getExperienceById/"+experienceId)
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(err: HttpErrorResponse){
 
     let errorMessage = ''

@@ -1,30 +1,18 @@
 <div class="container  ">
 
   <blockquote class="speech-bubble col-md-3">
-    <p><strong>TEST HEADER TEST HEADER TEST HEADER TEST HEADERTEST HEADER TEST HEADERTEST HEADER TEST HEADERTEST HEADER
-      TEST HEADERTEST HEADER TEST HEADERTEST HEADER TEST HEADER </strong>
+    <p><strong>{{experienceDto.header.toLocaleUpperCase()}}</strong>
       <br><br>
     </p>
-    <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
-      ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
-      Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
-      ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
-      Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
-      ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
-      Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
-      ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
-      Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
-      ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
-      Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
-      ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum</p>
-    <cite>test</cite>
+    <p>{{experienceDto.description}}</p>
+    <cite>{{experienceDto.userName}}</cite>
     <div class="row card-baseline">
       <button class="btn-icon "><i class="fa fa-comments icons"></i></button>
       <i class="fa fa-eye icons"></i>
       <div id="main-content">
         <div>
-          <input type="checkbox" id="likeCheckBox" class="likeCheckBox"/>  <!-- id must be unique to select desired checkbox -->
-          <label for="likeCheckBox">
+          <input type="checkbox" (change)="likeEvent($event,experienceDto.id)" id="likeCheckBox {{experienceDto.id}}" class="likeCheckBox"/>  <!-- id must be unique to select desired checkbox -->
+          <label for="likeCheckBox {{experienceDto.id}}">
             <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
               <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
                 <path

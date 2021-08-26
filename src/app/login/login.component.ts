@@ -7,6 +7,7 @@ import { UserDto } from '../domain/UserDto';
 import {Router} from '@angular/router';
 import {RegisterComponent} from '../register/register.component';
 import {MatDialog} from '@angular/material';
+import {NavbarService} from '../services/navBarService/navbar.service';
 
 @Component({
   selector: 'app-login',
@@ -20,13 +21,15 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private loginService: LoginService,
     private router:Router,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private navbarService : NavbarService
   ) {}
 
    private loginForm: FormGroup;
    private user: UserDto = new UserDto();
 
   ngOnInit(): void {
+    this.navbarService.hide();
     this.createLoginForm();
   }
 

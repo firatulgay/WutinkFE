@@ -123,6 +123,12 @@ $cite-color: $bubble-color;
   font-size: small;
 }
 
+.headerText{
+  color: $cite-color;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: large;
+}
+
 
 body{margin:0; padding:0; -webkit-font-smoothing: antialiased; font-family:arial;}
 

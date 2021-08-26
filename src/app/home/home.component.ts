@@ -5,6 +5,7 @@ import {CategoryDto} from '../domain/CategoryDto';
 import {WutinkCookieService} from '../services/cookieService/wutink-cookie.service';
 import {CategoryService} from '../services/categoryService/category-service.service';
 import {JwtModule} from '@auth0/angular-jwt';
+import {NavbarService} from '../services/navBarService/navbar.service';
 
 @Component({
   selector: 'app-home',
@@ -17,9 +18,11 @@ import {JwtModule} from '@auth0/angular-jwt';
 export class HomeComponent implements OnInit {
 
   constructor(public likeService:LikeService,
-              public wutinkCookieService: WutinkCookieService) { }
+              public wutinkCookieService: WutinkCookieService,
+              private navbarService: NavbarService) { }
 
   ngOnInit() {
+    this.navbarService.show();
   }
 
   likeEvent(event: any){

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../services/loginService/login.service';
 import {Router} from '@angular/router';
+import {NavbarService} from '../services/navBarService/navbar.service';
 
 @Component({
   selector: 'app-nav',
@@ -10,7 +11,8 @@ import {Router} from '@angular/router';
 export class NavComponent implements OnInit {
 
   constructor(private loginService: LoginService,
-              private router:Router) { }
+              private router:Router,
+              private navbarService:NavbarService) { }
 
   ngOnInit() {
   }

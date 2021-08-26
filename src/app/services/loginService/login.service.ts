@@ -13,6 +13,7 @@ import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {AuthDto} from '../../domain/AuthDto';
 import {MatDialog} from '@angular/material';
+import {NavbarService} from '../navBarService/navbar.service';
 
 @Injectable({
   providedIn: "root",

@@ -4,6 +4,7 @@ import {CategoryDto} from '../domain/CategoryDto';
 import {Router} from '@angular/router';
 import {EndPoints} from '../commons/endPoints';
 import {ExperienceListingComponent} from '../experience-listing/experience-listing.component';
+import {NavbarService} from '../services/navBarService/navbar.service';
 
 @Component({
   selector: 'app-category',
@@ -16,12 +17,14 @@ export class CategoryComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
-    private router:Router
+    private router:Router,
+    private navbarService:NavbarService
   ) { }
 
   mainCategories: CategoryDto[];
 
   ngOnInit() {
+    this.navbarService.show();
     this.getMainCategories();
   }
 

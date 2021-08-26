@@ -4,6 +4,7 @@ import {LikeService} from '../services/likeService/like.service';
 import {WutinkCookieService} from '../services/cookieService/wutink-cookie.service';
 import {ExperienceService} from '../services/experienceService/experience.service';
 import {ExperienceDto} from '../domain/ExperienceDto';
+import {NavbarService} from '../services/navBarService/navbar.service';
 
 @Component({
   selector: 'app-experience-listing',
@@ -16,10 +17,11 @@ export class ExperienceListingComponent implements OnInit {
               private router:Router,
               public likeService:LikeService,
               public wutinkCookieService: WutinkCookieService,
-              private experienceService:ExperienceService) { }
+              private experienceService:ExperienceService,
+              private navbarService: NavbarService) { }
 
   ngOnInit() {
-
+    this.navbarService.show()
     this.categoryId = this.activatedRoute.snapshot.params['categoryId'];
     this.getAllExperiencesByCategoryId(this.categoryId);
   }
@@ -45,8 +47,4 @@ export class ExperienceListingComponent implements OnInit {
       });
     }
   }
-
-
-
-
 }

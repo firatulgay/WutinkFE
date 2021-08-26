@@ -1,7 +1,35 @@
 .navbar{
   background-color: #ffffff !important;
-  border: none;
   margin-bottom: 30px;
   margin-top: 10px;
+  border-bottom-color: black ;
+  border-right: none ;
+  border-left: none ;
+  border-top: none;
 
+}
+
+.navTextHome{
+  color: #e07a5f !important;
+  font-size: x-large;
+}
+
+.navText{
+  color: #e07a5f !important;
+  font-size: medium;
+}
+
+.btn-icon{
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.searchBarForm{
+  margin-left: 2%;
+  width: 100%;
+}
+
+.searchBar{
+  width: 85%;
 }
