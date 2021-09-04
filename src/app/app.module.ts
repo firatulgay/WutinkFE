@@ -19,6 +19,8 @@ import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import { ExperienceListingComponent } from './experience-listing/experience-listing.component';
 import {ExperienceService} from './services/experienceService/experience.service';
 import { ExperienceDetailComponent } from './experience-detail/experience-detail.component';
+import {CommentComponent} from './comment/comment.component';
+import {CommentService} from './services/commentService/comment.service';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -33,7 +35,8 @@ export function tokenGetter() {
     NavComponent,
     RegisterComponent,
     ExperienceListingComponent,
-    ExperienceDetailComponent ,],
+    ExperienceDetailComponent,
+    CommentComponent ,],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -50,7 +53,7 @@ export function tokenGetter() {
       },
     }),
   ],
-  providers: [LoginService,LoginGuard,AlertifyService,CookieService,JwtModule,JwtHelperService,ExperienceService],
+  providers: [LoginService,LoginGuard,AlertifyService,CookieService,JwtModule,JwtHelperService,ExperienceService,CommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

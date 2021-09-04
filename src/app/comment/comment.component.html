@@ -1,0 +1,19 @@
+<div class="container">
+
+  <blockquote class="speech-bubble col-md-3">
+    <div *ngFor="let comment of commentList" class="wutink-comment">
+      <p> {{comment.description}}</p>
+      <div class="row card-baseline">
+        <div class="historyField">
+          <span class="comment-username">{{comment.username}}</span>
+          <span class="history-text">{{comment.creationTime}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wutink-more-comments">
+    <button class="btn btn-outline-dark">Load more comments...</button>
+    </div>
+  </blockquote>
+</div>
+
