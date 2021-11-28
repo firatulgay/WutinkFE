@@ -15,7 +15,7 @@ export class LoginGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
-      let auth = this.cookieService.get('jwtToken');
+      let auth = this.cookieService.get('jwtSessionId');
       if (auth == null || auth === ""){
 
         this.router.navigate(["login"]);

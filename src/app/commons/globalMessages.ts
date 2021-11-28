@@ -1,5 +1,6 @@
+import {MessageType} from './messageType';
+
 export class GlobalMessages{
-      errorMessage:string;
-      infoMessage:string;
-      confMessage:string;
+      messageType:MessageType;
+      message:string;
 }

@@ -1,19 +1,39 @@
 <div class="container">
-
-  <blockquote class="speech-bubble col-md-3">
-    <div *ngFor="let comment of commentList" class="wutink-comment">
-      <p> {{comment.description}}</p>
-      <div class="row card-baseline">
-        <div class="historyField">
-          <span class="comment-username">{{comment.username}}</span>
-          <span class="history-text">{{comment.creationTime}}</span>
+  <div class="d-flex justify-content-center row">
+    <div class="d-flex flex-column col-md-8">
+      <div class="d-flex flex-row align-items-center text-left comment-top p-2 bg-white border-bottom px-4">
+        <div class="coment-bottom bg-white p-2 px-4">
+          <div class="d-flex flex-row add-comment-section mt-4 mb-4">
+            <img class="img-fluid img-responsive rounded-circle mr-2" src="https://i.imgur.com/qdiP4DB.jpg" width="38">
+            <form [formGroup]="commentForm" (ngSubmit)="addComment()" class="form-group row wutink-addComment-form">
+              <input type="text" class="form-control mr-3 col-8 wutink-comment-input" placeholder="Add comment">
+              <button class="btn btn-primary col-2" type="button">Comment</button>
+            </form>
+          </div>
+          <div *ngFor="let comment of commentList" class="commented-section mt-2">
+            <div class="d-flex flex-row align-items-center commented-user">
+              <h5 class="mr-2 comment-username">{{comment.username}}</h5><span class="dot mb-1"></span><span
+              class="mb-1 ml-2">{{comment.creationTime}}</span>
+            </div>
+            <div class="comment-text-sm wutink-comment-component"><span>{{comment.description}}</span></div>
+            <div class="reply-section">
+              <div class="d-flex flex-row align-items-center voting-icons"><i
+                class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i
+                class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">10</span><span
+                class="dot ml-2"></span>
+                <h6 class="ml-2 mt-1">Reply</h6>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="wutink-more-comments">
+  </div>
+  <div class="wutink-more-comments">
     <button class="btn btn-outline-dark">Load more comments...</button>
-    </div>
-  </blockquote>
+  </div>
 </div>
+
+
+
 

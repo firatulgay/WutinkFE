@@ -276,5 +276,59 @@ svg{
   color: #6c6c6c;
   border: none;
   background:none;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+
+.bdge {
+  height: 21px;
+  background-color: orange;
+  color: #fff;
+  font-size: 11px;
+  padding: 8px;
+  border-radius: 4px;
+  line-height: 3px
+}
+
+.comments {
+  text-decoration: underline;
+  text-underline-position: under;
+  cursor: pointer
+}
+
+.dot {
+  height: 7px;
+  width: 7px;
+  margin-top: 3px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block
+}
+
+.hit-voting:hover {
+  color: blue
+}
+
+.hit-voting {
+  cursor: pointer
+}
+
+.wutink-comment-component{
+  box-sizing: border-box;
+  background-color: #f3f3f3;
+  border-bottom-left-radius: 18px;
+  border-top-right-radius: 18px;
+
+  padding: 2%;
+  margin-bottom: 10px;
+}
+
+.wutink-comment-input{
+  margin-left: 5%;
+}
+
+.wutink-addComment-form{
+  width: 100%;
 }
 

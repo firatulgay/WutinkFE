@@ -39,24 +39,19 @@ export class LoginService {
       })
     };
 
-    this.http.post<AuthDto>( EndPoints.root +"/login","",httpOptions)
+    this.http.post<AuthDto>(EndPoints.root + '/login', '', httpOptions)
       .pipe(tap((authResponse) => console.log(JSON.stringify(authResponse))),
         catchError(this.handleError))
       .subscribe((authResponse) => {
-
-        if (authResponse.token != null) {
-          this.cookieService.set('jwtSessionId',authResponse.token);
-          this.alertifyService.success("HOŞGELDİNİZ");
-          this.router.navigate(['categories']);
-          this.isLoggedIn=true;
-        }else {
-          this.alertifyService.error("Kullanıcı Adı Veya Parola Hatalı!");
-        }
+        this.cookieService.set('jwtSessionId', authResponse.token, 1, '/', 'localhost', true, 'Lax');
+        this.alertifyService.success('HOŞGELDİNİZ');
+        this.router.navigate(['categories']);
+        this.isLoggedIn = true;
       });
   }
 
   logOut(){
-    this.cookieService.delete('jwtToken');
+    this.cookieService.delete('jwtSessionId');
     this.isLoggedIn=false;
   }
 
@@ -68,13 +63,13 @@ export class LoginService {
 
         if (authResponse.success) {
           this.cookieService.set('jwtToken',authResponse.token);
-          this.alertifyService.success(authResponse.globalMessage.confMessage);
+          this.alertifyService.success(authResponse.globalMessage.message);
           this.router.navigate(['home']);
           this.isLoggedIn=true;
           this.matDialog.closeAll();
 
         }else {
-          this.alertifyService.error(authResponse.globalMessage.errorMessage);
+          this.alertifyService.error(authResponse.globalMessage.message);
         }
       });
 
@@ -86,7 +81,7 @@ export class LoginService {
     if (err.error instanceof ErrorEvent) {
       errorMessage = "An error occured" + err.error.message;
     } else {
-      errorMessage = "A systematical error occured";
+      errorMessage = "A systematical error occured" + err.message;
     }
     return throwError(errorMessage);
   }
