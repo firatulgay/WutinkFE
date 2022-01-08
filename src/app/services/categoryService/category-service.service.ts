@@ -5,6 +5,8 @@ import {EndPoints} from '../../commons/endPoints';
 import {catchError, tap} from 'rxjs/operators';
 import {CategoryDto} from '../../domain/CategoryDto';
 import {Observable, throwError} from 'rxjs';
+import {CookieService} from 'ngx-cookie-service';
+import {WutinkCookieService} from '../cookieService/wutink-cookie.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +14,12 @@ import {Observable, throwError} from 'rxjs';
 export class CategoryService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private cookieService: CookieService
   ) { }
 
   getMainCategories():Observable<CategoryDto[]>{
+    console.log( this.cookieService.get('jwtSessionId'));
    return  this.http.get<CategoryDto[]>( EndPoints.root +"/getCategories")
                     .pipe(catchError(this.handleError));
   }

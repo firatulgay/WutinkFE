@@ -15,12 +15,12 @@ export class LoginGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
-      let auth = this.cookieService.get('jwtSessionId');
-      if (auth == null || auth === ""){
+      let isloggedIn = this.loginService.isLoggedIn;
 
+      if (!isloggedIn){
         this.router.navigate(["login"]);
-        return false;
       }
-      return true;
+
+      return isloggedIn;
     }
 }

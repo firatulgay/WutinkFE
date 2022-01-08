@@ -35,15 +35,17 @@ export class LoginService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        Authorization: auth
-      })
+        Authorization: auth,
+
+      }),
+      withCredentials: true
     };
 
-    this.http.post<AuthDto>(EndPoints.root + '/login', '', httpOptions)
+    this.http.post<AuthDto>(EndPoints.root + '/doLogin', '', httpOptions)
       .pipe(tap((authResponse) => console.log(JSON.stringify(authResponse))),
         catchError(this.handleError))
       .subscribe((authResponse) => {
-        this.cookieService.set('jwtSessionId', authResponse.token, 1, '/', 'localhost', true, 'Lax');
+        // this.cookieService.set('jwtSessionId', authResponse.token, 1, '/', 'localhost', true, 'Lax');
         this.alertifyService.success('HOŞGELDİNİZ');
         this.router.navigate(['categories']);
         this.isLoggedIn = true;
@@ -51,12 +53,18 @@ export class LoginService {
   }
 
   logOut(){
-    this.cookieService.delete('jwtSessionId');
-    this.isLoggedIn=false;
+    this.http.post(EndPoints.root + '/doLogout','',{withCredentials: true})
+      .pipe(
+        catchError(this.handleError))
+      .subscribe(() => {
+        this.alertifyService.error('ÇIKIŞ YAPTINIZ');
+        this.router.navigate(['login'])
+        this.isLoggedIn=false;
+      });
   }
 
   register(user : UserDto){
-    this.http.post<AuthDto>( EndPoints.root +"/register",user)
+    this.http.post<AuthDto>( EndPoints.root +"/register",user,{withCredentials: true})
       .pipe(tap((authResponse) => console.log(JSON.stringify(authResponse))),
         catchError(this.handleError))
       .subscribe((authResponse) => {
@@ -80,8 +88,13 @@ export class LoginService {
 
     if (err.error instanceof ErrorEvent) {
       errorMessage = "An error occured" + err.error.message;
-    } else {
-      errorMessage = "A systematical error occured" + err.message;
+    }else if (err instanceof HttpErrorResponse){
+      if (err.status === 401) {
+        this.alertifyService.error('Hatalı kullanıcı adı veya şifre');
+      }
+    }
+    else {
+      errorMessage = "A systematical error occured";
     }
     return throwError(errorMessage);
   }

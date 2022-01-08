@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -21,6 +21,7 @@ import {ExperienceService} from './services/experienceService/experience.service
 import { ExperienceDetailComponent } from './experience-detail/experience-detail.component';
 import {CommentComponent} from './comment/comment.component';
 import {CommentService} from './services/commentService/comment.service';
+import {AuthInterceptor} from './auth/authInterceptor';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -53,7 +54,7 @@ export function tokenGetter() {
       },
     }),
   ],
-  providers: [LoginService,LoginGuard,AlertifyService,CookieService,JwtModule,JwtHelperService,ExperienceService,CommentService],
+  providers: [LoginService,LoginGuard,AlertifyService,CookieService,JwtModule,JwtHelperService,ExperienceService,CommentService,{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
