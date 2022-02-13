@@ -41,15 +41,18 @@ export class LoginService {
       withCredentials: true
     };
 
-    this.http.post<AuthDto>(EndPoints.root + '/doLogin', '', httpOptions)
-      .pipe(tap((authResponse) => console.log(JSON.stringify(authResponse))),
-        catchError(this.handleError))
-      .subscribe((authResponse) => {
-        // this.cookieService.set('jwtSessionId', authResponse.token, 1, '/', 'localhost', true, 'Lax');
-        this.alertifyService.success('HOŞGELDİNİZ');
-        this.router.navigate(['categories']);
-        this.isLoggedIn = true;
-      });
+      this.http.post<AuthDto>(EndPoints.root + '/doLogin', '', httpOptions)
+        .pipe(tap((authResponse) => console.log(JSON.stringify(authResponse))),
+          catchError(this.handleError))
+        .subscribe((authResponse) => {
+          if (!authResponse.success){
+            this.alertifyService.error(authResponse.globalMessage.message);
+          }else {
+            this.alertifyService.success(authResponse.globalMessage.message);
+            this.router.navigate(['categories']);
+            this.isLoggedIn = true;
+          }
+        });
   }
 
   logOut(){
