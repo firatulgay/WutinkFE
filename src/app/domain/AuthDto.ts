@@ -4,5 +4,6 @@ export class AuthDto extends BaseDto{
 
    userId : string ;
    token :string;
-   success : boolean;
+   success : boolean = false;
+
 }

@@ -22,7 +22,7 @@ import { ExperienceDetailComponent } from './experience-detail/experience-detail
 import {CommentComponent} from './comment/comment.component';
 import {CommentService} from './services/commentService/comment.service';
 import {AuthInterceptor} from './auth/authInterceptor';
-import {HttpErrorInterceptorService} from './utils/interceptors/httpErrorInterceptorService';
+import { ErrorUtilComponent } from './utils/error-util/error-util.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -38,7 +38,8 @@ export function tokenGetter() {
     RegisterComponent,
     ExperienceListingComponent,
     ExperienceDetailComponent,
-    CommentComponent ,],
+    CommentComponent,
+    ErrorUtilComponent ,],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -56,7 +57,6 @@ export function tokenGetter() {
     }),
   ],
   providers: [LoginService,LoginGuard,AlertifyService,CookieService,JwtModule,JwtHelperService,ExperienceService,CommentService,
-    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
