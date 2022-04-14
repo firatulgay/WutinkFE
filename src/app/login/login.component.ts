@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EndPoints } from '../commons/endPoints';
-import { AlertifyService } from '../services/alertifyService/alertify.service';
 import { LoginService } from '../services/loginService/login.service';
 import { UserDto } from '../domain/UserDto';
 import {Router} from '@angular/router';
@@ -9,7 +7,6 @@ import {RegisterComponent} from '../register/register.component';
 import {MatDialog} from '@angular/material';
 import {NavbarService} from '../services/navBarService/navbar.service';
 import {ErrorUtilService} from '../services/error-util.service';
-import {BaseDto} from '../commons/baseDto';
 import {AuthDto} from '../domain/AuthDto';
 import {Observable, throwError} from 'rxjs';
 import {HttpErrorResponse} from '@angular/common/http';
@@ -34,7 +31,9 @@ export class LoginComponent implements OnInit {
    private loginForm: FormGroup;
    private user: UserDto = new UserDto();
    private authDto:Observable<AuthDto> ;
-  errMessage:string;
+   errMessage:string;
+
+  @ViewChild("dangerAlert",{ static: false}) alertDanger: ElementRef;
 
 
   ngOnInit(): void {

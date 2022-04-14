@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {ErrorUtilService} from '../../services/error-util.service';
 
 @Component({
@@ -8,12 +8,19 @@ import {ErrorUtilService} from '../../services/error-util.service';
 })
 export class ErrorUtilComponent implements OnInit {
 
-  constructor(private errorUtilService:ErrorUtilService) { }
+  @ViewChild('alert',{ static: false}) alert:ElementRef;
+
+  constructor() { }
+
 
   ngOnInit() {
   }
 
   @Input()
   errorMessage: string;
+
+  close(){
+    window.location.reload();
+  }
 
 }
