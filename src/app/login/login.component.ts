@@ -11,6 +11,7 @@ import {AuthDto} from '../domain/AuthDto';
 import {Observable, throwError} from 'rxjs';
 import {HttpErrorResponse} from '@angular/common/http';
 import {LoginHelper} from '../utils/login-service-singleton.service';
+import {GlobalMessages} from '../commons/globalMessages';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
    private loginForm: FormGroup;
    private user: UserDto = new UserDto();
    private authDto:Observable<AuthDto> ;
-   errMessage:string;
+   globalMessage : GlobalMessages = new GlobalMessages();
 
   @ViewChild("dangerAlert",{ static: false}) alertDanger: ElementRef;
 
@@ -72,7 +73,8 @@ export class LoginComponent implements OnInit {
         this.user = Object.assign({}, this.loginForm.value);
         this.loginService.login(this.user).subscribe(authResponse => {
           if (!authResponse.success){
-            this.errMessage = authResponse.globalMessage.message;
+            this.globalMessage.messageType = authResponse.globalMessage.messageType;
+            this.globalMessage.message = authResponse.globalMessage.message;
           }else {
             LoginHelper.isLoggedIn = true;
             this.router.navigate(['categories']);
@@ -80,12 +82,10 @@ export class LoginComponent implements OnInit {
         },error => {
 
           if (error instanceof HttpErrorResponse) {
-            if (error.status === 401) {
-              this.errMessage = "Hatalı kullanıcı adı veya parola!";
-            }
+            this.globalMessage.message=error.error.globalMessage.message;
             return;
           }
-          this.errMessage = "Bilinmeyen bir hata oluştu. Daha sonra tekrar deneyin.";
+          this.globalMessage.message = "Bilinmeyen bir hata oluştu. Daha sonra tekrar deneyin.";
         });
     }
   }

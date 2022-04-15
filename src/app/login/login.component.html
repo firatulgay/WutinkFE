@@ -1,5 +1,13 @@
 
-<app-error-util *ngIf="errMessage" [errorMessage]="errMessage"></app-error-util>
+<div *ngIf="globalMessage.message" class="signin-error">
+
+  <div *ngIf="globalMessage.messageType == 'WARN_MESSAGE'; else elseBlock">
+    <app-warning-util  [warnMessage]="globalMessage.message"></app-warning-util>
+  </div>
+  <ng-template #elseBlock>
+    <app-error-util [errorMessage]="globalMessage.message"></app-error-util>
+  </ng-template>
+</div>
 
 <div class="login-img">
   <img class="img" src="assets/images/test.png">
