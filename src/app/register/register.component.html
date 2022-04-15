@@ -5,6 +5,16 @@
       <p>It's quick and easy!</p>
     </div>
 
+    <div *ngIf="globalMessage.message" class="signin-error">
+
+      <div *ngIf="globalMessage.messageType == 'WARN_MESSAGE'; else elseBlock">
+        <app-warning-util  [warnMessage]="globalMessage.message"></app-warning-util>
+      </div>
+      <ng-template #elseBlock>
+        <app-error-util [errorMessage]="globalMessage.message"></app-error-util>
+      </ng-template>
+    </div>
+
     <form [formGroup]="registerForm" (ngSubmit)="register()" class="form-signin">
       <div class="form-group">
         <input type="text" formControlName="userName" name="userName" class="form-control" id="userName" placeholder="Username" [ngClass]="

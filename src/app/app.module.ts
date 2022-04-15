@@ -23,6 +23,7 @@ import {CommentComponent} from './comment/comment.component';
 import {CommentService} from './services/commentService/comment.service';
 import {AuthInterceptor} from './auth/authInterceptor';
 import { ErrorUtilComponent } from './utils/error-util/error-util.component';
+import { WarningUtilComponent } from './utils/warning-util/warning-util/warning-util.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -39,7 +40,8 @@ export function tokenGetter() {
     ExperienceListingComponent,
     ExperienceDetailComponent,
     CommentComponent,
-    ErrorUtilComponent ,],
+    ErrorUtilComponent,
+    WarningUtilComponent ,],
   imports: [
     BrowserModule,
     AppRoutingModule,

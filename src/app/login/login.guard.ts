@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import { from } from "rxjs";
 import {LoginService} from '../services/loginService/login.service';
 import {CookieService} from 'ngx-cookie-service';
+import {LoginHelper} from '../utils/login-service-singleton.service';
 
 
 
@@ -15,7 +16,7 @@ export class LoginGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
-      let isloggedIn = this.loginService.isLoggedIn;
+      let isloggedIn = LoginHelper.isLoggedIn;
 
       if (!isloggedIn){
         this.router.navigate(["login"]);

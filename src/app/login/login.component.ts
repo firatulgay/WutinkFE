@@ -10,6 +10,7 @@ import {ErrorUtilService} from '../services/error-util.service';
 import {AuthDto} from '../domain/AuthDto';
 import {Observable, throwError} from 'rxjs';
 import {HttpErrorResponse} from '@angular/common/http';
+import {LoginHelper} from '../utils/login-service-singleton.service';
 
 @Component({
   selector: 'app-login',
@@ -73,7 +74,7 @@ export class LoginComponent implements OnInit {
           if (!authResponse.success){
             this.errMessage = authResponse.globalMessage.message;
           }else {
-            this.loginService.isLoggedIn = true;
+            LoginHelper.isLoggedIn = true;
             this.router.navigate(['categories']);
           }
         },error => {

@@ -55,3 +55,8 @@
 .form-signin .forgetPass{
   text-align: center;
 }
+
+.signin-error{
+  margin-left: 13% ;
+  margin-right: 13% ;;
+}

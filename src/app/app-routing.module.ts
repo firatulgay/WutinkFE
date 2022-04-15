@@ -11,7 +11,7 @@ import {ExperienceDetailComponent} from './experience-detail/experience-detail.c
 const routes: Routes = [
   {path:'login', component : LoginComponent},
   {path:'home', component : HomeComponent}, //canActivate:[LoginGuard] will be added later
-  {path:'categories', component : CategoryComponent},
+  {path:'categories', component : CategoryComponent ,canActivate:[LoginGuard]} ,
   {path:'register', component : RegisterComponent},
   {path:'experience/c/:categoryId', component : ExperienceListingComponent},
   {path:'experience/e/:experienceId', component : ExperienceDetailComponent}
