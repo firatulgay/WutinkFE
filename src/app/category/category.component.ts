@@ -31,8 +31,8 @@ export class CategoryComponent implements OnInit {
   getMainCategories(){
     this.categoryService.getMainCategories().subscribe(data =>{
       this.mainCategories = data;
-      let otherCategory = this.mainCategories.find(value => value.name ==="Diğer");
-      let indexOfOther= this.mainCategories.indexOf(this.mainCategories.find(value => value.name ==="Diğer"));
+      let otherCategory = this.mainCategories.find(value => value.name ==="OTHER");
+      let indexOfOther= this.mainCategories.indexOf(this.mainCategories.find(value => value.name ==="OTHER"));
       if (indexOfOther > -1) {
         this.mainCategories.splice(indexOfOther, 1);
       }

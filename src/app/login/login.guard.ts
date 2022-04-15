@@ -16,12 +16,10 @@ export class LoginGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
-      let isloggedIn = LoginHelper.isLoggedIn;
-
-      if (!isloggedIn){
-        this.router.navigate(["login"]);
+      if ("true"== localStorage.getItem("isLoggedIn")){
+        return true;
       }
-
-      return isloggedIn;
+      this.router.navigate(["login"]);
+      return false;
     }
 }

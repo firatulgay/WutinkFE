@@ -48,7 +48,7 @@ export class LoginService {
       .subscribe(() => {
         this.alertifyService.error('ÇIKIŞ YAPTINIZ');
         this.router.navigate(['login']);
-        LoginHelper.isLoggedIn = false;
+        localStorage.setItem("isLoggedIn","false");
       });
   }
 

@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
 
           if (authResponse.success) {
             this.alertifyService.success(authResponse.globalMessage.message);
-            LoginHelper.isLoggedIn = true;
+            localStorage.setItem("isLoggedIn","true");
             this.router.navigate(['home']);
             this.matDialog.closeAll();
 
