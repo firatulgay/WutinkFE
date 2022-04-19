@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {EndPoints} from '../commons/endPoints';
 import {ExperienceListingComponent} from '../experience-listing/experience-listing.component';
 import {NavbarService} from '../services/navBarService/navbar.service';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-category',
@@ -18,7 +20,8 @@ export class CategoryComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private router:Router,
-    private navbarService:NavbarService
+    private navbarService:NavbarService,
+    private _sanitizer: DomSanitizer
   ) { }
 
   mainCategories: CategoryDto[];
@@ -28,17 +31,32 @@ export class CategoryComponent implements OnInit {
     this.getMainCategories();
   }
 
+
   getMainCategories(){
+
     this.categoryService.getMainCategories().subscribe(data =>{
+      console.log(data);
       this.mainCategories = data;
-      let otherCategory = this.mainCategories.find(value => value.name ==="OTHER");
-      let indexOfOther= this.mainCategories.indexOf(this.mainCategories.find(value => value.name ==="OTHER"));
+      addIconSafe.call(this);
+      handleOtherCategory.call(this);
+    });
+
+    function addIconSafe() {
+      this.mainCategories.forEach(cat => {
+        let safeResourceUrl = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
+          + cat.icon);
+        cat.iconSafe = safeResourceUrl;
+      });
+    }
+
+    function handleOtherCategory() {
+      let otherCategory = this.mainCategories.find(value => value.name === 'OTHER');
+      let indexOfOther = this.mainCategories.indexOf(this.mainCategories.find(value => value.name === 'OTHER'));
       if (indexOfOther > -1) {
         this.mainCategories.splice(indexOfOther, 1);
       }
-
       this.mainCategories.push(otherCategory);
-    });
+    }
   }
 
   categoryOnClick(name: string, id: number){

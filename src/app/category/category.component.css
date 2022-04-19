@@ -39,7 +39,7 @@ body {
 .card {
   width: 250px;
   height: 250px;
-  background-color: #f7f7f7;
+  background-color: rgb(213 148 0 / 10%);
   border-top-right-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -55,6 +55,11 @@ body {
   margin-top: 1%;
   margin-left: 3%;
 
+}
+
+.cat-name-text{
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #e07a5f !important;
 }
 
 .card:hover {
