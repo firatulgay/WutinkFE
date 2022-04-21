@@ -102,6 +102,23 @@ $direction-map: (
  }
 }
 
+.create-post {
+  filter: drop-shadow(-1px -1px 2px rgba(black, .10)) drop-shadow(1px 2px 2px rgba(black, .15));
+  margin-bottom: ($gutter * 2);
+  padding: 0.5rem 1.5rem;
+  position: relative;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  background:#C0C0BF;
+  color: $bubble-color;
+  max-width: 100%;
+
+}
+.post-icon{
+  margin-left: 78%;
+}
+
 
 .speech-bubble cite {
   position: absolute;
@@ -257,5 +274,14 @@ svg{
 
 .card-baseline{
   align-items: baseline;
+}
+.btn-post{
+  width: 85%;
+  text-align: initial;
+  color: #8ca8d8;
+  background-color: #d6d6d61f;
+  height: 55px;
+  border: solid;
+  border-radius: 100px;
 }
 

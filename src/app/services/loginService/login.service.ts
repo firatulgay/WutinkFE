@@ -13,7 +13,6 @@ import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {AuthDto} from '../../domain/AuthDto';
 import {ErrorUtilService} from '../error-util.service';
-import {LoginHelper} from '../../utils/login-service-singleton.service';
 
 
 @Injectable({

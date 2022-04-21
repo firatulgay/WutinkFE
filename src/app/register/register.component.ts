@@ -8,7 +8,6 @@ import {AlertifyService} from '../services/alertifyService/alertify.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {GlobalMessages} from '../commons/globalMessages';
 import {MessageType} from '../commons/messageType';
-import {LoginHelper} from '../utils/login-service-singleton.service';
 
 @Component({
   selector: 'app-register',

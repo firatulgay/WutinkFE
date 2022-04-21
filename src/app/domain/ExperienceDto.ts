@@ -5,7 +5,7 @@ export class ExperienceDto extends BaseDto {
   id: number;
   header: string;
   description: string;
-  categoryId: number;
+  categoryIdList: number [];
   userName: string;
   creationTime: string;
 

@@ -58,7 +58,7 @@ body {
 }
 
 .cat-name-text{
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: monospace;
   color: #e07a5f !important;
 }
 

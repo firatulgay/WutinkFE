@@ -10,7 +10,6 @@ import {ErrorUtilService} from '../services/error-util.service';
 import {AuthDto} from '../domain/AuthDto';
 import {Observable, throwError} from 'rxjs';
 import {HttpErrorResponse} from '@angular/common/http';
-import {LoginHelper} from '../utils/login-service-singleton.service';
 import {GlobalMessages} from '../commons/globalMessages';
 
 @Component({

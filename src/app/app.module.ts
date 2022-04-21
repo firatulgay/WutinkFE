@@ -24,12 +24,15 @@ import {CommentService} from './services/commentService/comment.service';
 import {AuthInterceptor} from './auth/authInterceptor';
 import { ErrorUtilComponent } from './utils/error-util/error-util.component';
 import { WarningUtilComponent } from './utils/warning-util/warning-util/warning-util.component';
+import {NewPostComponent} from './new-post/new-post.component';
+import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
 }
 
 @NgModule({
+
   declarations: [
     AppComponent,
     LoginComponent,
@@ -41,8 +44,11 @@ export function tokenGetter() {
     ExperienceDetailComponent,
     CommentComponent,
     ErrorUtilComponent,
-    WarningUtilComponent ,],
+    WarningUtilComponent,
+    NewPostComponent
+  ],
   imports: [
+    NgMultiSelectDropDownModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     FormsModule,

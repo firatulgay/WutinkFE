@@ -3,7 +3,6 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import { from } from "rxjs";
 import {LoginService} from '../services/loginService/login.service';
 import {CookieService} from 'ngx-cookie-service';
-import {LoginHelper} from '../utils/login-service-singleton.service';
 
 
 

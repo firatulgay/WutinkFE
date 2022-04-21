@@ -7,6 +7,7 @@ import {CategoryDto} from '../../domain/CategoryDto';
 import {Observable, throwError} from 'rxjs';
 import {CookieService} from 'ngx-cookie-service';
 import {WutinkCookieService} from '../cookieService/wutink-cookie.service';
+import {CategoryDropdownDto} from '../../domain/CategoryDropdownDto';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,12 @@ export class CategoryService {
     console.log( this.cookieService.get('jwtSessionId'));
    return  this.http.get<CategoryDto[]>( EndPoints.root +"/getCategories")
                     .pipe(catchError(this.handleError));
+  }
+
+  getCategoriesForDropdown():Observable<CategoryDropdownDto[]>{
+    console.log( this.cookieService.get('jwtSessionId'));
+    return  this.http.get<CategoryDropdownDto[]>( EndPoints.root +"/getCategoriesForDropdown")
+      .pipe(catchError(this.handleError));
   }
 
 private handleError(err: HttpErrorResponse){

@@ -4,7 +4,8 @@ import {Observable, throwError} from 'rxjs';
 import {CategoryDto} from '../../domain/CategoryDto';
 import {ExperienceDto} from '../../domain/ExperienceDto';
 import {EndPoints} from '../../commons/endPoints';
-import {catchError} from 'rxjs/operators';
+import {catchError, tap} from 'rxjs/operators';
+import {AuthDto} from '../../domain/AuthDto';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,11 @@ export class ExperienceService {
       .pipe(catchError(this.handleError));
   }
 
+  saveExperience(experienceDto:ExperienceDto):Observable<ExperienceDto>{
+    return this.http.post<ExperienceDto>(EndPoints.root + '/saveExperience', experienceDto, {withCredentials: true})
+      .pipe(tap((expResponse) => console.log(JSON.stringify(expResponse))), catchError(this.setError));
+  }
+
   private handleError(err: HttpErrorResponse){
 
     let errorMessage = ''
@@ -33,6 +39,11 @@ export class ExperienceService {
       errorMessage = "A systematical error occured " + err.error.message
     }
     return throwError(errorMessage) ;
+  }
+
+  setError(error) {
+    console.log(error);
+    return throwError(error);
   }
 
 }

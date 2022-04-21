@@ -6,6 +6,9 @@ import {WutinkCookieService} from '../services/cookieService/wutink-cookie.servi
 import {CategoryService} from '../services/categoryService/category-service.service';
 import {JwtModule} from '@auth0/angular-jwt';
 import {NavbarService} from '../services/navBarService/navbar.service';
+import {RegisterComponent} from '../register/register.component';
+import {MatDialog} from '@angular/material';
+import {NewPostComponent} from '../new-post/new-post.component';
 
 @Component({
   selector: 'app-home',
@@ -17,22 +20,18 @@ import {NavbarService} from '../services/navBarService/navbar.service';
 
 export class HomeComponent implements OnInit {
 
-  constructor(public likeService:LikeService,
-              public wutinkCookieService: WutinkCookieService,
-              private navbarService: NavbarService) { }
+  constructor(private navbarService: NavbarService,
+              private matDialog: MatDialog) { }
 
   ngOnInit() {
     this.navbarService.show();
   }
 
-  likeEvent(event: any){
-    if (event.currentTarget.checked){
-      this.likeService.likeExperience(1,this.wutinkCookieService.getSessionUser()).subscribe(data => {
-     });
-    }
-    else {
-        this.likeService.unlikeExperience(1,this.wutinkCookieService.getSessionUser()).subscribe(data => {
-        });
-    }
+  openPostPopup() {
+    const dialogRef = this.matDialog.open(NewPostComponent, {
+      role: 'dialog',
+      height: '580px',
+      width: '580px'
+    });
   }
 }
