@@ -18,12 +18,12 @@ export class LikeService {
 
   }
 
-  likeExperience(experienceId: number, username: string): Observable<boolean> {
-    return this.http.get<any>(EndPoints.root + '/operations/like?experienceId=' + experienceId + '&username=' + username).pipe(catchError(this.handleError));
+    likeExperience(experienceId: number): Observable<boolean> {
+    return this.http.get<any>(EndPoints.root + '/operations/like?experienceId=' + experienceId).pipe(catchError(this.handleError));
   }
 
-  unlikeExperience(experienceId: number, username: string) {
-    return this.http.get<any>(EndPoints.root + '/operations/unlike?experienceId=' + experienceId + '&username=' + username).pipe(catchError(this.handleError));
+  unlikeExperience(experienceId: number) {
+    return this.http.get<any>(EndPoints.root + '/operations/unlike?experienceId=' + experienceId).pipe(catchError(this.handleError));
   }
 
   private handleError(err: HttpErrorResponse) {

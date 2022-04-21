@@ -5,6 +5,8 @@ import {WutinkCookieService} from '../services/cookieService/wutink-cookie.servi
 import {ExperienceService} from '../services/experienceService/experience.service';
 import {ExperienceDto} from '../domain/ExperienceDto';
 import {NavbarService} from '../services/navBarService/navbar.service';
+import {NewPostComponent} from '../new-post/new-post.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-experience-listing',
@@ -18,7 +20,8 @@ export class ExperienceListingComponent implements OnInit {
               public likeService:LikeService,
               public wutinkCookieService: WutinkCookieService,
               private experienceService:ExperienceService,
-              private navbarService: NavbarService) { }
+              private navbarService: NavbarService,
+              private matDialog:MatDialog) { }
 
   ngOnInit() {
     this.navbarService.show()
@@ -39,12 +42,19 @@ export class ExperienceListingComponent implements OnInit {
 
   likeEvent(event: any, experienceId: number){
     if (event.currentTarget.checked){
-      this.likeService.likeExperience(experienceId,this.wutinkCookieService.getSessionUser()).subscribe(data => {
+      this.likeService.likeExperience(experienceId).subscribe(data => {
       });
     }
     else {
-      this.likeService.unlikeExperience(experienceId,this.wutinkCookieService.getSessionUser()).subscribe(data => {
+      this.likeService.unlikeExperience(experienceId).subscribe(data => {
       });
     }
+  }
+  openPostPopup() {
+    const dialogRef = this.matDialog.open(NewPostComponent, {
+      role: 'dialog',
+      height: '580px',
+      width: '580px'
+    });
   }
 }

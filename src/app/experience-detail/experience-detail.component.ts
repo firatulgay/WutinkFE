@@ -39,11 +39,11 @@ export class ExperienceDetailComponent implements OnInit {
 
   likeEvent(event: any, experienceId: number){
     if (event.currentTarget.checked){
-      this.likeService.likeExperience(experienceId,this.wutinkCookieService.getSessionUser()).subscribe(data => {
+      this.likeService.likeExperience(experienceId).subscribe(data => {
       });
     }
     else {
-      this.likeService.unlikeExperience(experienceId,this.wutinkCookieService.getSessionUser()).subscribe(data => {
+      this.likeService.unlikeExperience(experienceId).subscribe(data => {
       });
     }
   }

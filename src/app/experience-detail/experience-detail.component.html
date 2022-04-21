@@ -1,7 +1,7 @@
-<div class="container  ">
+<div class="container" style="max-width: 1010px;">
 
   <blockquote class="speech-bubble col-md-3">
-    <p><strong>{{experienceDto.header.toLocaleUpperCase()}}</strong>
+    <p class="headerText"><strong>{{experienceDto.header.toLocaleUpperCase()}}</strong>
       <br><br>
     </p>
     <p>{{experienceDto.description}}</p>
@@ -9,10 +9,10 @@
     <div class="row card-baseline">
       <i class="fa fa-eye icons"></i>
       <div id="main-content">
-        <div>
+        <div >
           <input type="checkbox" (change)="likeEvent($event,experienceDto.id)" id="likeCheckBox {{experienceDto.id}}" class="likeCheckBox"/>  <!-- id must be unique to select desired checkbox -->
           <label for="likeCheckBox {{experienceDto.id}}">
-            <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
+            <svg style="width: 37px!important;" id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
               <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
                 <path
                   d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"

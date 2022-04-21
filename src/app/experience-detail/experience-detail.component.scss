@@ -77,21 +77,30 @@ $cite-color: $bubble-color;
 /// ==========================================================
 
 .speech-bubble {
-  filter: drop-shadow(-1px -1px 2px rgba(black, .10)) drop-shadow(1px 2px 2px rgba(black, .15));
+  -webkit-filter: drop-shadow(-1px -1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.15));
+  filter: drop-shadow(-1px -1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.15));
   margin: 1rem;
-  margin-bottom: ($gutter * 1);
+  margin-bottom: 30px;
   padding: 1.5rem 2rem;
   position: relative;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   font-weight: 400;
-  background: $bubble-bg;
-  color: $bubble-color;
+  background: #f4f4f4;
+  color: #727272;
   max-width: 100%;
+  border-radius: 20px;
+  border: solid;
+  border-color: #8CA8D8;
 
   &::before {
     @include caret(bottom, ($caret-unit / 2), $bubble-bg);
-    border-top-width: $caret-unit;
+    border: 9.5px solid transparent;
+    border-top: 21.5px solid #8CA8D8;
+    border-bottom: 0;
+    height: 0;
+    width: 0;
+    border-top-width: 21px;
     content: '';
     display: block;
     position: absolute;
@@ -117,13 +126,19 @@ $cite-color: $bubble-color;
 
 .icons{
   margin: 20px;
-  color: $cite-color;
+  color: #aab8c2;
+  max-width: 37px;
 }
 .history-text{
   font-size: small;
 }
 .historyField{
   margin-left: 70%;
+}
+
+exp-description{
+  font-family: Helvetica;
+  color: #727272;
 }
 
 
@@ -260,5 +275,11 @@ svg{
 
 .card-baseline{
   align-items: baseline;
+}
+
+.headerText{
+  color: #8ca8d8;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: revert;
 }
 
