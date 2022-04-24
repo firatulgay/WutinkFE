@@ -14,19 +14,15 @@ import {WutinkCookieService} from '../cookieService/wutink-cookie.service';
 })
 export class CommentService {
 
-  constructor(private http : HttpClient,
-              private wutinkCookieService:WutinkCookieService) {  }
+  constructor(private http : HttpClient) {  }
 
   getAllCommentsByExperienceId(experienceId : number):Observable<CommentDto[]>{
     return  this.http.get<CommentDto[]>( EndPoints.root +"/operations/getCommentsByExperienceId?experienceId="+experienceId)
       .pipe(catchError(this.handleError));
   }
 
-  addComment(comment:CommentDto){
-    let sessionUser = this.wutinkCookieService.getSessionUser();
-    comment.username = sessionUser;
-
-    this.http.post<CommentDto[]>( EndPoints.root +"/operations/doComment",comment)
+  addComment(comment:CommentDto) : Observable<any>{
+    return this.http.post<any>( EndPoints.root +"/operations/doComment",comment)
       .pipe(catchError(this.handleError));
   }
 

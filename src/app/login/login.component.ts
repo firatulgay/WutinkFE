@@ -76,6 +76,7 @@ export class LoginComponent implements OnInit {
             this.globalMessage.message = authResponse.globalMessage.message;
           }else {
             localStorage.setItem("isLoggedIn","true");
+            localStorage.setItem("username",authResponse.userName);
             this.router.navigate(['categories']);
           }
         },error => {

@@ -2,7 +2,7 @@ import {BaseDto} from '../commons/baseDto';
 
 export class AuthDto extends BaseDto{
 
-   userId : string ;
+   userName : string ;
    token :string;
    success : boolean = false;
 

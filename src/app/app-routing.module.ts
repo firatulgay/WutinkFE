@@ -8,6 +8,7 @@ import {RegisterComponent} from './register/register.component';
 import {ExperienceListingComponent} from './experience-listing/experience-listing.component';
 import {ExperienceDetailComponent} from './experience-detail/experience-detail.component';
 import {NewPostComponent} from './new-post/new-post.component';
+import {CommentComponent} from './comment/comment.component';
 
 const routes: Routes = [
   {path:'login', component : LoginComponent},
@@ -16,8 +17,8 @@ const routes: Routes = [
   {path:'register', component : RegisterComponent},
   {path:'experience/c/:categoryId', component : ExperienceListingComponent},
   {path:'experience/e/:experienceId', component : ExperienceDetailComponent},
-  {path:'new-post', component : NewPostComponent}
-
+  {path:'new-post', component : NewPostComponent},
+  {path:'comments', component:CommentComponent}
 
 ];
 
