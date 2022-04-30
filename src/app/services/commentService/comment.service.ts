@@ -8,6 +8,7 @@ import {CommentDto} from '../../domain/commentDto';
 import {UserDto} from '../../domain/UserDto';
 import {AuthDto} from '../../domain/AuthDto';
 import {WutinkCookieService} from '../cookieService/wutink-cookie.service';
+import {PageSizeDto} from '../../domain/PageSizeDto';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,10 @@ export class CommentService {
 
   constructor(private http : HttpClient) {  }
 
-  getAllCommentsByExperienceId(experienceId : number):Observable<CommentDto[]>{
-    return  this.http.get<CommentDto[]>( EndPoints.root +"/operations/getCommentsByExperienceId?experienceId="+experienceId)
+  getAllCommentsByExperienceId(experienceId : number,firstIndex :number,offsetSize:number):Observable<CommentDto[]>{
+    return  this.http.get<CommentDto[]>( EndPoints.root +"/operations/getCommentsByExperienceId?experienceId="+experienceId +
+      "&firstIndexOfPage="+firstIndex +
+      "&offsetSize=" +offsetSize)
       .pipe(catchError(this.handleError));
   }
 

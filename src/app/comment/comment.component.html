@@ -10,12 +10,12 @@
       </button>
     </form>
   </div>
+  <div *ngIf="commentList.length > 0">
 
   <div class="wutink-comment-list">
     <div *ngFor="let comment of commentList" class="commented-section mt-2 wutink-comment-section">
-      <div class="d-flex flex-row align-items-center commented-user">
-        <h5 class="mr-2 comment-username">{{comment.username}}</h5><span class="dot mb-1"></span><span
-        class="mb-1 ml-2">{{comment.creationTime}}</span>
+      <div class="d-flex flex-row align-items-center">
+        <h5 class="mr-2 wutink-comment-username">@{{comment.username}}</h5>
       </div>
       <div class="comment-text-sm wutink-comment-component"><span>{{comment.description}}</span></div>
       <div class="reply-section">
@@ -23,14 +23,22 @@
           class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i
           class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">10</span><span
           class="dot ml-2"></span>
-          <h6 class="ml-2 mt-1">Reply</h6>
+          <button class="btn wutink-btn-reply">Reply</button>
+          <span class="wutink-comment-date">
+          {{comment.creationTime}}
+        </span>
         </div>
       </div>
     </div>
 
-    <div class="wutink-more-comments">
-      <button class="btn btn-outline-dark">Load more comments...</button>
+    <div *ngIf="isLoadMoreBtnVisible == true">
+      <div class="wutink-more-comments">
+        <button class="btn btn-outline-dark" (click)="loadMoreComments()">Load more comments...</button>
+      </div>
     </div>
+    </div>
+
+
   </div>
 
 

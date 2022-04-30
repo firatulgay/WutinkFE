@@ -5,6 +5,8 @@ import {CommentDto} from '../domain/commentDto';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserDto} from '../domain/UserDto';
 import {Router} from '@angular/router';
+import {templateJitUrl} from '@angular/compiler';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-comment',
@@ -24,18 +26,18 @@ export class CommentComponent implements OnInit {
   }
 
   currentUserName:string;
-
   @Input()
   experienceId: number;
 
   private commentList : CommentDto[];
   commentForm: FormGroup;
   private newCommentDto: CommentDto = new CommentDto();
+  isLoadMoreBtnVisible = false;
 
 
   getAllCommentsByExperienceId(experienceId:number){
-    this.commentService.getAllCommentsByExperienceId(experienceId).subscribe(data =>{
-      console.log(data);
+    this.commentService.getAllCommentsByExperienceId(experienceId,0,5).subscribe(data =>{
+      this.isLoadMoreBtnVisible = data.length >= 5;
       this.commentList=data;
     });
   }
@@ -53,5 +55,17 @@ export class CommentComponent implements OnInit {
       this.commentService.addComment(this.newCommentDto).subscribe(value => console.log(value));
       window.location.reload();
     }
+  }
+
+  private firstIndex :number = 5;
+  private offsetSize:number = 5;
+
+  loadMoreComments(){
+    this.commentService.getAllCommentsByExperienceId(this.experienceId,this.firstIndex,this.offsetSize).subscribe(data => {
+      console.log(data);
+      this.isLoadMoreBtnVisible = data.length >= 5;
+      data.forEach(commentDto => this.commentList.push(commentDto));
+    });
+    this.firstIndex = this.firstIndex + 5;
   }
 }
