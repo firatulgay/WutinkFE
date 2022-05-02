@@ -35,13 +35,13 @@ export class CategoryComponent implements OnInit {
   getMainCategories(){
 
     this.categoryService.getMainCategories().subscribe(data =>{
-      console.log(data);
       this.mainCategories = data;
-      addIconSafe.call(this);
+      this.categoryService.addCatIconSafe(this.mainCategories)
+      addCatIconSafe.call(this);
       handleOtherCategory.call(this);
     });
 
-    function addIconSafe() {
+    function addCatIconSafe() {
       this.mainCategories.forEach(cat => {
         let safeResourceUrl = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
           + cat.icon);

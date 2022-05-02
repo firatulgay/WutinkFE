@@ -8,6 +8,7 @@ import {Observable, throwError} from 'rxjs';
 import {CookieService} from 'ngx-cookie-service';
 import {WutinkCookieService} from '../cookieService/wutink-cookie.service';
 import {CategoryDropdownDto} from '../../domain/CategoryDropdownDto';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class CategoryService {
 
   constructor(
     private http: HttpClient,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private _sanitizer: DomSanitizer
   ) { }
 
   getMainCategories():Observable<CategoryDto[]>{
@@ -42,4 +44,12 @@ private handleError(err: HttpErrorResponse){
   }
   return throwError(errorMessage) ;
 }
+
+  addCatIconSafe(mainCategories:CategoryDto[]) {
+    mainCategories.forEach(cat => {
+      let safeResourceUrl = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
+        + cat.icon);
+      cat.iconSafe = safeResourceUrl;
+    });
+  }
 }

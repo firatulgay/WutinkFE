@@ -9,6 +9,7 @@ import {ExperienceListingComponent} from './experience-listing/experience-listin
 import {ExperienceDetailComponent} from './experience-detail/experience-detail.component';
 import {NewPostComponent} from './new-post/new-post.component';
 import {CommentComponent} from './comment/comment.component';
+import {UserProfileComponent} from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {path:'login', component : LoginComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path:'experience/c/:categoryId', component : ExperienceListingComponent},
   {path:'experience/e/:experienceId', component : ExperienceDetailComponent},
   {path:'new-post', component : NewPostComponent},
-  {path:'comments', component:CommentComponent}
+  {path:'comments', component:CommentComponent},
+  {path:'profile', component:UserProfileComponent}
 
 ];
 

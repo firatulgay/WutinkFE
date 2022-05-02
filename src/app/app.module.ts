@@ -26,6 +26,7 @@ import { ErrorUtilComponent } from './utils/error-util/error-util.component';
 import { WarningUtilComponent } from './utils/warning-util/warning-util/warning-util.component';
 import {NewPostComponent} from './new-post/new-post.component';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -45,7 +46,8 @@ export function tokenGetter() {
     CommentComponent,
     ErrorUtilComponent,
     WarningUtilComponent,
-    NewPostComponent
+    NewPostComponent,
+    UserProfileComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
