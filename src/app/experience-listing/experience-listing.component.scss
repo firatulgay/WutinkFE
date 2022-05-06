@@ -140,16 +140,18 @@ $cite-color: $bubble-color;
 .btn-post{
   width: 100%;
   text-align: initial;
-  color: #7a7a7a;
   background-color: #d6d6d61f;
   height: 55px;
   border: solid;
+  border-color: #e07a5f;
   border-radius: 100px;
   margin-bottom: 25px;
+  box-shadow:none;
 }
 
 .post-icon{
   margin-left: 80%;
+  color: #e07a5f;
 }
 
 

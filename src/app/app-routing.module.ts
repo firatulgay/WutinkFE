@@ -20,7 +20,7 @@ const routes: Routes = [
   {path:'experience/e/:experienceId', component : ExperienceDetailComponent},
   {path:'new-post', component : NewPostComponent},
   {path:'comments', component:CommentComponent},
-  {path:'profile', component:UserProfileComponent}
+  {path:'profile/:username', component:UserProfileComponent}
 
 ];
 

@@ -52,7 +52,7 @@ export class NewPostComponent implements OnInit {
     });
 
     this.matDialog.closeAll();
-
+    window.location.reload();
   }
 
   fillCategoryDropdown(){

@@ -13,7 +13,7 @@ import {CookieService} from 'ngx-cookie-service';
 import { CategoryComponent } from './category/category.component';
 import { NavComponent } from './nav/nav.component';
 import { RegisterComponent } from './register/register.component';
-import {MatDialogModule} from "@angular/material";
+import {MatDialogModule, MatFormFieldModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import { ExperienceListingComponent } from './experience-listing/experience-listing.component';
@@ -61,10 +61,11 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["localhost"],
-        disallowedRoutes: ["http://example.com/examplebadroute/"],
+        allowedDomains: ['localhost'],
+        disallowedRoutes: ['http://example.com/examplebadroute/'],
       },
     }),
+    MatFormFieldModule,
   ],
   providers: [LoginService,LoginGuard,AlertifyService,CookieService,JwtModule,JwtHelperService,ExperienceService,CommentService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],

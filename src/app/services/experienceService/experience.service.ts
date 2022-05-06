@@ -41,9 +41,13 @@ export class ExperienceService {
     return throwError(errorMessage) ;
   }
 
+  getAllExperiencesByUsername(username:string):Observable<ExperienceDto[]> {
+    return  this.http.get<ExperienceDto[]>( EndPoints.root +"/getAllExperiencesByUsername/"+username)
+      .pipe(catchError(this.handleError));
+  }
+
   setError(error) {
     console.log(error);
     return throwError(error);
   }
-
 }
