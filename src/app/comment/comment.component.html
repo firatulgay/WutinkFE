@@ -1,6 +1,6 @@
 <div class="container" style="max-width: 1010px" xmlns="http://www.w3.org/1999/html">
 
-  <div class="wutink-comment-row">
+  <div class="wutink-comment-row" *ngIf="isAddCommentVisible == true">
     <form [formGroup]="commentForm" (ngSubmit)="addComment()" class="form-group row wutink-addComment-form">
       <img class="wutink-comment-img img-responsive rounded-circle col-md-1" src="https://i.imgur.com/qdiP4DB.jpg" width="38">
       <textarea type="text" name="description" class="form-control wutink-comment-box col-md-9" formControlName="description"
@@ -10,8 +10,8 @@
       </button>
     </form>
   </div>
-  <div *ngIf="commentList.length > 0">
 
+  <div *ngIf="commentList.length > 0">
   <div class="wutink-comment-list">
     <div *ngFor="let comment of commentList" class="commented-section mt-2 wutink-comment-section">
       <div class="d-flex flex-row align-items-center">
@@ -37,10 +37,7 @@
       </div>
     </div>
     </div>
-
-
   </div>
-
 
 </div>
 

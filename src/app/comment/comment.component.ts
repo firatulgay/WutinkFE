@@ -26,14 +26,17 @@ export class CommentComponent implements OnInit {
   }
 
   currentUserName:string;
+
   @Input()
   experienceId: number;
+
+  @Input()
+  isAddCommentVisible: boolean;
 
   private commentList : CommentDto[];
   commentForm: FormGroup;
   private newCommentDto: CommentDto = new CommentDto();
   isLoadMoreBtnVisible = false;
-
 
   getAllCommentsByExperienceId(experienceId:number){
     this.commentService.getAllCommentsByExperienceId(experienceId,0,5).subscribe(data =>{

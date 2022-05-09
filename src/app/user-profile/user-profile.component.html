@@ -19,9 +19,8 @@
         </ul>
 
         <div class="card">
-          <details *ngFor="let experience of experienceList" class="info">
-            <summary>{{experience.header}}</summary>
-            <p>{{experience.description}}</p>
+          <details  *ngFor="let experience of experienceList" class="info">
+            <summary (click)="openExperiencePopup(experience.id)">{{experience.header}}</summary>
           </details>
 
         </div>

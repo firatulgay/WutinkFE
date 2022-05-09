@@ -27,6 +27,7 @@ import { WarningUtilComponent } from './utils/warning-util/warning-util/warning-
 import {NewPostComponent} from './new-post/new-post.component';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ExperienceDetailPopupComponent } from './experience-detail-popup/experience-detail-popup.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -47,7 +48,8 @@ export function tokenGetter() {
     ErrorUtilComponent,
     WarningUtilComponent,
     NewPostComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ExperienceDetailPopupComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),

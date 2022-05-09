@@ -10,6 +10,7 @@ import {ExperienceDetailComponent} from './experience-detail/experience-detail.c
 import {NewPostComponent} from './new-post/new-post.component';
 import {CommentComponent} from './comment/comment.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
+import {ExperienceDetailPopupComponent} from './experience-detail-popup/experience-detail-popup.component';
 
 const routes: Routes = [
   {path:'login', component : LoginComponent},
@@ -21,7 +22,6 @@ const routes: Routes = [
   {path:'new-post', component : NewPostComponent},
   {path:'comments', component:CommentComponent},
   {path:'profile/:username', component:UserProfileComponent}
-
 ];
 
 @NgModule({

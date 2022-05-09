@@ -336,21 +336,5 @@ body {
   }
 }
 
-@counter-style corona-warning {
-  system: cyclic;
-  symbols: 🧼 🩺 👩🏻‍⚕️ 🚑;
-  suffix: " ";
-}
-@counter-style corona-info {
-  system: cyclic;
-  symbols: 🧬;
-  suffix: " ";
-}
-@counter-style corona-alert {
-  system: fixed;
-  symbols: 💉 🩸 😷 🦠 🧫;
-  suffix: " ";
-}
-
 
 

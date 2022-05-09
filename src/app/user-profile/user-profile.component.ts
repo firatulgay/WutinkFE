@@ -7,6 +7,7 @@ import {ExperienceService} from '../services/experienceService/experience.servic
 import {ExperienceDto} from '../domain/ExperienceDto';
 import {NewPostComponent} from '../new-post/new-post.component';
 import {MatDialog} from '@angular/material';
+import {ExperienceDetailPopupComponent} from '../experience-detail-popup/experience-detail-popup.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -51,6 +52,15 @@ export class UserProfileComponent implements OnInit {
       role: 'dialog',
       height: '580px',
       width: '580px'
+    });
+  }
+
+  openExperiencePopup(experienceIdPopup:number) {
+    const dialogRef = this.matDialog.open(ExperienceDetailPopupComponent, {
+      role: 'dialog',
+      height: '500px',
+      width: '750px',
+      data:{experienceIdPopup:experienceIdPopup},
     });
   }
 }
