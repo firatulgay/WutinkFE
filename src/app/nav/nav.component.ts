@@ -14,11 +14,14 @@ export class NavComponent implements OnInit {
               private router:Router,
               private navbarService:NavbarService) { }
 
+
   ngOnInit() {
+    this.username = localStorage.getItem("username");
   }
+
+  username:string;
 
   logout(){
     this.loginService.logOut();
   }
-
 }

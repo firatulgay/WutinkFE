@@ -40,6 +40,7 @@ export class UserProfileComponent implements OnInit {
     })
   }
   getAllExperiencesByUsername(){
+
     this.experienceService.getAllExperiencesByUsername(this.username).subscribe(data => {
       this.experienceList=data;
     });

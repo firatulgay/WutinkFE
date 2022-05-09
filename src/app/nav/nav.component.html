@@ -32,16 +32,13 @@
         <button class="btn-icon " type="submit"><i class="fa fa-search icons"></i></button>
       </form>
 
-      <!-- Example single danger button -->
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle profile-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa fa-user user-icon"></i>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
+      <div class="sec-center">
+        <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+        <label class="for-dropdown" for="dropdown"><i class="fa fa-user-circle-o icons"></i><i class="uil uil-arrow-down"></i></label>
+        <div class="section-dropdown">
+          <a [routerLink]="" (click)="router.navigate(['profile/'+ username])">Profile<i class="uil uil-arrow-right"></i></a>
+          <a [routerLink]="" (click)="logout()">Logout<i class="uil uil-arrow-right"></i></a>
+        </div>
       </div>
 
     </div>
