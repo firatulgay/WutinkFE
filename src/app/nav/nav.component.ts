@@ -16,12 +16,16 @@ export class NavComponent implements OnInit {
 
 
   ngOnInit() {
-    this.username = localStorage.getItem("username");
   }
 
   username:string;
 
   logout(){
     this.loginService.logOut();
+  }
+
+  onProfileClick(){
+    this.username = localStorage.getItem("username");
+    this.router.navigate(['profile/'+ this.username])
   }
 }

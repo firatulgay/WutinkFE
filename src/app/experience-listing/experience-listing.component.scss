@@ -92,6 +92,7 @@ $cite-color: $bubble-color;
   border-radius: 20px;
   border: solid;
   border-color: #8CA8D8;
+  max-height: 242px;
 
   &::before {
     @include caret(bottom, ($caret-unit / 2), $bubble-bg);

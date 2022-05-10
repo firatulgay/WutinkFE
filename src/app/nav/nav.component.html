@@ -34,10 +34,10 @@
 
       <div class="sec-center">
         <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
-        <label class="for-dropdown" for="dropdown"><i class="fa fa-user-circle-o icons"></i><i class="uil uil-arrow-down"></i></label>
+        <label class="for-dropdown raw" for="dropdown"><i class="fa fa-user-circle-o icons"></i><i class="fa fa-caret-down icons"></i></label>
         <div class="section-dropdown">
-          <a [routerLink]="" (click)="router.navigate(['profile/'+ username])">Profile<i class="uil uil-arrow-right"></i></a>
-          <a [routerLink]="" (click)="logout()">Logout<i class="uil uil-arrow-right"></i></a>
+          <a [routerLink]="" (click)="onProfileClick()">Profile</a>
+          <a [routerLink]="" (click)="logout()">Logout</a>
         </div>
       </div>
 

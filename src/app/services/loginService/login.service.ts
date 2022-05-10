@@ -48,6 +48,7 @@ export class LoginService {
         this.alertifyService.error('ÇIKIŞ YAPTINIZ');
         this.router.navigate(['login']);
         localStorage.setItem("isLoggedIn","false");
+        localStorage.removeItem("username");
       });
   }
 
