@@ -1,9 +1,11 @@
 <div class="container" style="max-width: 1010px;">
 
   <blockquote class="speech-bubble col-md-3">
-    <p class="headerText"><strong>{{experienceDto.header.toLocaleUpperCase()}}</strong>
+    <a href="" class="headerText" [routerLink]="" (click)="router.navigate(['experience/e/'+experienceDto.id])"><strong>{{
+      experienceDto.header.length > 35 ? experienceDto.header.substr(0, 35).toLocaleUpperCase() + '...' :
+        experienceDto.header.toLocaleUpperCase()}}</strong>
       <br><br>
-    </p>
+    </a>
     <p>{{experienceDto.description}}</p>
     <cite>{{experienceDto.userName}}</cite>
     <div class="row card-baseline">

@@ -193,7 +193,7 @@ body{
   -ms-flex-pack: center;
   text-align: center;
   border: none;
-  background-color: #8ca8d8;
+  background-color: #e07a62;
   cursor: pointer;
   color: #fafafa;
   box-shadow: 0 12px 35px 0 rgba(255,235,167,.15);
@@ -236,10 +236,10 @@ body{
 .section-dropdown {
   position: absolute;
   padding: 5px;
-  background-color: #8ca8d8;
+  background-color: #e07a62;
   top: 56px;
   left: 0;
-  width: 100%;
+  width: 160%;
   border-radius: 4px;
   display: block;
   box-shadow: 0 14px 35px 0 rgba(9,9,12,0.4);
@@ -276,7 +276,7 @@ body{
   height: 0;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-bottom: 8px solid #8ca8d8;
+  border-bottom: 8px solid #e07a62;
   content: '';
   display: block;
   z-index: 2;

@@ -5,6 +5,7 @@ import {WutinkCookieService} from '../services/cookieService/wutink-cookie.servi
 import {ExperienceService} from '../services/experienceService/experience.service';
 import {ExperienceDto} from '../domain/ExperienceDto';
 import {NavbarService} from '../services/navBarService/navbar.service';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-experience-detail',
@@ -18,12 +19,14 @@ export class ExperienceDetailComponent implements OnInit {
               public likeService:LikeService,
               public wutinkCookieService: WutinkCookieService,
               private experienceService:ExperienceService,
-              private navbarService: NavbarService) { }
+              private navbarService: NavbarService,
+              private matDialog:MatDialog) { }
 
   ngOnInit() {
     this.navbarService.show();
     this.experienceId = this.activatedRoute.snapshot.params['experienceId'];
     this.getExperienceById(this.experienceId);
+    this.matDialog.closeAll();
   }
 
   experienceId : number;

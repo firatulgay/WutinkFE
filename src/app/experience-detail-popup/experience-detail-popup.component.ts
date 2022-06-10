@@ -18,7 +18,8 @@ export class ExperienceDetailPopupComponent implements OnInit {
               public likeService:LikeService,
               public wutinkCookieService: WutinkCookieService,
               private experienceService:ExperienceService,
-              @Inject(MAT_DIALOG_DATA) public data
+              @Inject(MAT_DIALOG_DATA) public data,
+              private router:Router
   ) { }
 
   ngOnInit() {

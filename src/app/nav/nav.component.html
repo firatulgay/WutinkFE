@@ -11,13 +11,7 @@
         <li class="nav-item active">
           <a class="nav-link navText" [routerLink]="" (click)="router.navigate(['categories'])" >Categories<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item navText">
-          <a class="nav-link navText" href="#">Link</a>
-        </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle navText" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
@@ -34,7 +28,14 @@
 
       <div class="sec-center">
         <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
-        <label class="for-dropdown raw" for="dropdown"><i class="fa fa-user-circle-o icons"></i><i class="fa fa-caret-down icons"></i></label>
+        <label class="for-dropdown row" for="dropdown">
+          <div class="col-md-1">
+          <i class="fa fa-user-circle-o icons "></i>
+          </div>
+          <div class="col-md-6">
+            <i class="fa fa-caret-down icons" ></i>
+          </div>
+        </label>
         <div class="section-dropdown">
           <a [routerLink]="" (click)="onProfileClick()">Profile</a>
           <a [routerLink]="" (click)="logout()">Logout</a>

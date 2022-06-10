@@ -14,7 +14,9 @@
       </a>
       <p class="exp-description">
         {{experience.description.length > 70 ? experience.description.substr(0, 70) + '...' : experience.description}}</p>
-      <cite>{{experience.userName}}</cite>
+      <cite><a style="color:#e07a5f " [routerLink]="" (click)="router.navigate(['profile/'+ experience.userName])">
+        {{experience.userName}}
+      </a></cite>
       <div class="row card-baseline">
         <button class="btn-icon "><i class="fa fa-comments icons"></i></button>
         <i class="fa fa-eye icons"></i>
