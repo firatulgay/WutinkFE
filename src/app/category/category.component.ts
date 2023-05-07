@@ -36,6 +36,7 @@ export class CategoryComponent implements OnInit {
 
     this.categoryService.getMainCategories().subscribe(data =>{
       this.mainCategories = data;
+      console.log("main categories -> ",this.mainCategories)
       this.categoryService.addCatIconSafe(this.mainCategories)
       addCatIconSafe.call(this);
       handleOtherCategory.call(this);

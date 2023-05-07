@@ -22,7 +22,6 @@ export class CategoryService {
   ) { }
 
   getMainCategories():Observable<CategoryDto[]>{
-    console.log( this.cookieService.get('jwtSessionId'));
    return  this.http.get<CategoryDto[]>( EndPoints.root +"/getCategories")
                     .pipe(catchError(this.handleError));
   }

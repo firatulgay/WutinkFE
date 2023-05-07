@@ -40,7 +40,7 @@
         <button *ngFor="let mainCategory of mainCategories"
                 class="list-group-item wutink-maincategories-list-group-item"
                 (click)="router.navigate(['experience/c/'+mainCategory.id])">
-          <img [src]="mainCategory.iconSafe" style="z-index: 1;max-width: 8%;margin-right: 10px">
+          <img [src]="mainCategory.icon" style="z-index: 1;max-width: 8%;margin-right: 10px">
           {{mainCategory.name}}
         </button>
       </ul>
