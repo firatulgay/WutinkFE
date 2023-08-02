@@ -40,7 +40,7 @@ export class ExperienceListingComponent implements OnInit {
 
   }
 
-  likeEvent(event: any, experienceId: number){
+  likeExperienceEvent(event: any, experienceId: number){
     if (event.currentTarget.checked){
       this.likeService.likeExperience(experienceId).subscribe(data => {
       });

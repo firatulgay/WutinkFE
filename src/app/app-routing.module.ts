@@ -11,6 +11,7 @@ import {NewPostComponent} from './new-post/new-post.component';
 import {CommentComponent} from './comment/comment.component';
 import {UserProfileComponent} from './user-profile/user-profile.component';
 import {ExperienceDetailPopupComponent} from './experience-detail-popup/experience-detail-popup.component';
+import {ExperienceSearchComponent} from "./experience-search/experience-search.component";
 
 const routes: Routes = [
   {path:'login', component : LoginComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'categories', component : CategoryComponent ,canActivate:[LoginGuard]} ,
   {path:'register', component : RegisterComponent},
   {path:'experience/c/:categoryId', component : ExperienceListingComponent},
+  {path:'experience', component : ExperienceSearchComponent},
   {path:'experience/e/:experienceId', component : ExperienceDetailComponent},
   {path:'new-post', component : NewPostComponent},
   {path:'comments', component:CommentComponent},

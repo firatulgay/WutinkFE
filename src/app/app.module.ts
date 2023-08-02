@@ -28,6 +28,9 @@ import {NewPostComponent} from './new-post/new-post.component';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ExperienceDetailPopupComponent } from './experience-detail-popup/experience-detail-popup.component';
+import { ExperienceSearchComponent } from './experience-search/experience-search.component';
+import {RouteReuseStrategy} from "@angular/router";
+import {CustomRouteReuseStrategy} from "./utils/CustomRouteReuseStrategy";
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -49,7 +52,8 @@ export function tokenGetter() {
     WarningUtilComponent,
     NewPostComponent,
     UserProfileComponent,
-    ExperienceDetailPopupComponent
+    ExperienceDetailPopupComponent,
+    ExperienceSearchComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),
@@ -70,7 +74,7 @@ export function tokenGetter() {
     MatFormFieldModule,
   ],
   providers: [LoginService,LoginGuard,AlertifyService,CookieService,JwtModule,JwtHelperService,ExperienceService,CommentService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },{ provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

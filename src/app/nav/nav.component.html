@@ -21,9 +21,9 @@
         </li>
       </ul>
 
-      <form class="form-inline my-2 my-lg-0 searchBarForm">
-        <input class="form-control mr-sm-2 searchBar" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn-icon " type="submit"><i class="fa fa-search icons"></i></button>
+      <form name="searchForm" class="form-inline my-2 my-lg-0 searchBarForm" (ngSubmit)="onSearch()">
+        <input name="searchInput" class="form-control mr-sm-2 searchBar" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchText">
+        <button class="btn-icon" type="submit"><i class="fa fa-search icons"></i></button>
       </form>
 
       <div class="sec-center">
