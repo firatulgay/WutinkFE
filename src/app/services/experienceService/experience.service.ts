@@ -46,8 +46,15 @@ export class ExperienceService {
       .pipe(catchError(this.handleError));
   }
 
+  getAllExperiencesByPage(page:number, size:number):Observable<ExperienceDto[]>{
+    return  this.http.get<ExperienceDto[]>( EndPoints.root +"/getAllExperiencesByPage"+ "?page="+page + "&" + "size=" + size)
+      .pipe(catchError(this.handleError));
+  }
+
   setError(error) {
     console.log(error);
     return throwError(error);
   }
+
+
 }

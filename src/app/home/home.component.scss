@@ -29,25 +29,25 @@ $cite-color: $bubble-color;
 /// @return {List} - List of opposite directions
 
 @function opposite-direction($directions) {
-$opposite-directions: ();
-$direction-map: (
-'top': 'bottom',
-'right': 'left',
-'bottom': 'top',
-'left': 'right',
-'center': 'center',
-'ltr': 'rtl',
-'rtl': 'ltr'
-);
+  $opposite-directions: ();
+  $direction-map: (
+    'top': 'bottom',
+    'right': 'left',
+    'bottom': 'top',
+    'left': 'right',
+    'center': 'center',
+    'ltr': 'rtl',
+    'rtl': 'ltr'
+  );
 
   @each $direction in $directions {
-  $direction: to-lower-case($direction);
+    $direction: to-lower-case($direction);
 
     @if map-has-key($direction-map, $direction) {
       $opposite-directions: append($opposite-directions, unquote(map-get($direction-map, $direction)));
     } @else {
-  @warn "No opposite direction can be found for `#{$direction}`. Direction omitted.";
-  }
+      @warn "No opposite direction can be found for `#{$direction}`. Direction omitted.";
+    }
   }
 
   @return $opposite-directions;
@@ -56,7 +56,7 @@ $direction-map: (
 
 /// Unit Removal
 @function strip-unit($num) {
-@return $num / ($num * 0 + 1);
+  @return $num / ($num * 0 + 1);
 }
 
 
@@ -77,54 +77,46 @@ $direction-map: (
 /// ==========================================================
 
 .speech-bubble {
-  filter: drop-shadow(-1px -1px 2px rgba(black, .10)) drop-shadow(1px 2px 2px rgba(black, .15));
+  -webkit-filter: drop-shadow(-1px -1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.15));
+  filter: drop-shadow(-1px -1px 2px rgba(0, 0, 0, 0.1)) drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.15));
   margin: 1rem;
-  margin-bottom: ($gutter * 2);
+  margin-bottom: 30px;
   padding: 1.5rem 2rem;
   position: relative;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   font-weight: 400;
-  background: $bubble-bg;
-  color: $bubble-color;
-  max-width: 100%;
+  background: #f4f4f4;
+  color: #727272;
+  max-width: 300px;
+  border-radius: 20px;
+  border: solid;
+  border-color: #8CA8D8;
+  max-height: 242px;
 
-&::before {
- @include caret(bottom, ($caret-unit / 2), $bubble-bg);
-   border-top-width: $caret-unit;
-   content: '';
-   display: block;
-   position: absolute;
-   left: 3rem;
-   bottom: -$caret-unit;
-   transform-origin: center;
-   transform: rotate(90deg) skew(-(strip-unit($caret-unit))+deg) translateY($caret-unit / 1.5);
- }
-}
-
-.create-post-form {
-  filter: drop-shadow(-1px -1px 2px rgba(black, .10)) drop-shadow(1px 2px 2px rgba(black, .15));
-  margin-bottom: ($gutter * 2);
-  padding: 0.5rem 1.5rem;
-  position: relative;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 400;
-  background:#C0C0BF;
-  color: $bubble-color;
-  max-width: 100%;
-
-}
-.post-icon{
-  margin-left: 78%;
+  &::before {
+    @include caret(bottom, ($caret-unit / 2), $bubble-bg);
+    border: 9.5px solid transparent;
+    border-top: 21.5px solid #8CA8D8;
+    border-bottom: 0;
+    height: 0;
+    width: 0;
+    border-top-width: 21px;
+    content: '';
+    display: block;
+    position: absolute;
+    left: 3rem;
+    bottom: -$caret-unit;
+    transform-origin: center;
+    transform: rotate(90deg) skew(-(strip-unit($caret-unit))+deg) translateY($caret-unit / 1.5);
+  }
 }
 
 
 .speech-bubble cite {
   position: absolute;
   bottom: -2rem;
-  left: 4.5rem;
-  font-size: 1rem;
+  left: 4rem;
   font-style: normal;
   font-weight: 300;
   letter-spacing: 0.5px;
@@ -133,11 +125,34 @@ $direction-map: (
 
 .icons{
   margin: 10px;
-  color: $cite-color;
+  color: #aab8c2;
+  max-width: 37px;
 }
 .history-text{
-  margin-left: 25px;
   font-size: small;
+}
+
+.headerText{
+  color: #8ca8d8;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: revert;
+}
+
+.btn-post{
+  width: 100%;
+  text-align: initial;
+  background-color: #d6d6d61f;
+  height: 55px;
+  border: solid;
+  border-color: #e07a5f;
+  border-radius: 100px;
+  margin-bottom: 25px;
+  box-shadow:none;
+}
+
+.post-icon{
+  margin-left: 80%;
+  color: #e07a5f;
 }
 
 
@@ -155,9 +170,9 @@ svg{
   #main-circ{transform-origin:29.5px 29.5px;}
 }
 
-#likeCheckBox{display:none;}
+.likeCheckBox{display:none;}
 
-#likeCheckBox:checked + label svg{
+.likeCheckBox:checked + label svg{
   #heart{transform:scale(.2); fill:#E2264D; animation:animateHeart .3s linear forwards .25s;}
   #main-circ{transition:all 2s; animation:animateCircle .3s linear forwards; opacity:1;}
   #grp1{
@@ -275,15 +290,19 @@ svg{
 .card-baseline{
   align-items: baseline;
 }
-.btn-post{
-  width: 85%;
-  text-align: initial;
-  background-color: #d6d6d61f;
-  height: 55px;
-  border: solid;
-  border-color: #e07a5f;
-  border-radius: 100px;
-  margin-bottom: 25px;
-  box-shadow:none;
+
+.wutink-more-experience{
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #6c6c6c;
+  border: none;
+  background:none;
+  margin-top: 15px;
+  margin-bottom: 100px;
+  //position: relative;
+  //left: 50%;
+  //transform: translate(100%,100%);
 }
 
