@@ -1,4 +1,4 @@
-// This solution uses transforms and a caret mixin.
+/// This solution uses transforms and a caret mixin.
 // What will yours be? Fork this pen and share
 // your solution in this comments.
 
@@ -88,8 +88,8 @@ $cite-color: $bubble-color;
   font-weight: 400;
   background: #f4f4f4;
   color: #727272;
-  max-width: 300px;
   width: 300px;
+  max-width: 300px;
   border-radius: 20px;
   border: solid;
   border-color: #8CA8D8;
@@ -125,7 +125,19 @@ $cite-color: $bubble-color;
 }
 
 .icons{
-  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: #aab8c2;
+  max-width: 37px;
+}
+
+.icons-heart{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   color: #aab8c2;
   max-width: 37px;
 }
@@ -172,6 +184,16 @@ svg{
 }
 
 .likeCheckBox{display:none;}
+.likeCount{
+  margin-top: -15px;
+  font-size: x-small;
+}
+
+.commentCount{
+  margin-top: 0px;
+  font-size: x-small;
+  text-align: center;
+}
 
 .likeCheckBox:checked + label svg{
   #heart{transform:scale(.2); fill:#E2264D; animation:animateHeart .3s linear forwards .25s;}
@@ -290,7 +312,9 @@ svg{
 
 .card-baseline{
   align-items: baseline;
+  margin-top: 30px;
 }
+
 
 .wutink-more-experience{
   width: 100%;

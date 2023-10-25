@@ -18,14 +18,20 @@
         {{experience.userName}}
       </a></cite>
       <div class="row card-baseline">
-        <button class="btn-icon "><i class="fa fa-comments icons"></i></button>
+        <div>
+          <button class="btn-icon "><i class="fa fa-comments icons"></i></button>
+          <div class="commentCount">
+            {{experience.commentCount == 0 ? "" : experience.commentCount}}
+          </div>
+        </div>
+
         <i class="fa fa-eye icons"></i>
         <div id="main-content">
           <div>
             <input type="checkbox" (change)="likeExperienceEvent($event,experience.id)" id="likeCheckBox {{experience.id}}"
                    class="likeCheckBox"/>  <!-- id must be unique to select desired checkbox -->
             <label for="likeCheckBox {{experience.id}}">
-              <svg class="icons"  id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
+              <svg class="icons-heart"  id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
                 <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
                   <path
                     d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z"
@@ -34,9 +40,12 @@
                 </g>
               </svg>
             </label>
+            <div class="likeCount">
+              {{experience.likeCount == 0 ? "" : experience.likeCount}}
+            </div>
           </div>
         </div>
-        <span class="history-text">{{experience.creationTime}}</span>
+        <span class="history-text">{{experience.creationTimeStr}}</span>
       </div>
     </blockquote>
   </div>
