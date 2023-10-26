@@ -50,6 +50,10 @@ export class ExperienceService {
     return  this.http.get<ExperienceDto[]>( EndPoints.root +"/getAllExperiencesByPage"+ "?page="+page + "&" + "size=" + size)
       .pipe(catchError(this.handleError));
   }
+  deleteExperienceById(id:number){
+    return this.http.delete((EndPoints.root) + "/deleteExperienceById?id=" + id)
+      .pipe(catchError(this.handleError));
+  }
 
   setError(error) {
     console.log(error);

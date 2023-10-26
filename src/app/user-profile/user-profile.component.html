@@ -18,11 +18,17 @@
           </li>
         </ul>
 
-        <div class="card">
-          <details  *ngFor="let experience of experienceList" class="info">
-            <summary class="list-group" (click)="openExperiencePopup(experience.id)">{{experience.header}}</summary>
-          </details>
-
+        <div *ngFor="let experience of experienceList" class="card">
+            <div class="row">
+              <div class="col-md-9">
+                <summary class="list-group" (click)="openExperiencePopup(experience.id)">{{experience.header}}</summary>
+              </div>
+              <div class="col-md-3 text-end">
+                <button type="button" class="btn-delete" (click)="deleteExperience(experience.id)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+            </div>
         </div>
 
       </div>

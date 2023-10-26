@@ -63,4 +63,19 @@ export class UserProfileComponent implements OnInit {
       data:{experienceIdPopup:experienceIdPopup},
     });
   }
+
+  deleteExperience(id: number) {
+    this.experienceService.deleteExperienceById(id).subscribe(
+      () => {
+        window.location.reload();
+      },
+      (error) => {
+        // Handle error here, you can display the error message to the user
+        console.error('Delete error:', error);
+        // Display an error message to the user using MatSnackBar or Toastr
+        // this.snackBar.open(error, 'Close', { duration: 5000 });
+      }
+    );
+
+  }
 }
