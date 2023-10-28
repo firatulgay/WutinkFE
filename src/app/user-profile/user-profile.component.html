@@ -6,7 +6,7 @@
         <i class="fa fa-pencil post-icon"></i>
       </button>
 
-      <div class="wutink-user-profile-container" id="asdasd">
+      <div class="wutink-user-profile-container" id="asdasd" >
         <ul class="nav nav-tabs">
           <li class="nav-item ">
             <button class="nav-link active wutink-user-profile-nav-text" data-bs-toggle="tab" href="#home">Experiences
@@ -23,7 +23,7 @@
               <div class="col-md-9">
                 <summary class="list-group" (click)="openExperiencePopup(experience.id)">{{experience.header}}</summary>
               </div>
-              <div class="col-md-3 text-end">
+              <div class="col-md-3 text-end" *ngIf="isCurrentUser">
                 <button type="button" class="btn-delete" (click)="deleteExperience(experience.id)">
                   <i class="fa fa-trash"></i>
                 </button>

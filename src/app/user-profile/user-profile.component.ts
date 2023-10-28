@@ -8,6 +8,8 @@ import {ExperienceDto} from '../domain/ExperienceDto';
 import {NewPostComponent} from '../new-post/new-post.component';
 import {MatDialog} from '@angular/material';
 import {ExperienceDetailPopupComponent} from '../experience-detail-popup/experience-detail-popup.component';
+import {UserService} from '../services/userService/user.service';
+import {UserDto} from '../domain/UserDto';
 
 @Component({
   selector: 'app-user-profile',
@@ -21,18 +23,30 @@ export class UserProfileComponent implements OnInit {
               private router:Router,
               private activatedRoute:ActivatedRoute,
               private experienceService:ExperienceService,
-              private matDialog:MatDialog) { }
+              private matDialog:MatDialog,
+              private userService:UserService) { }
 
   ngOnInit() {
     this.navbarService.show();
     this.username = this.activatedRoute.snapshot.params['username'];
     this.getAllCategories();
     this.getAllExperiencesByUsername();
+
+    this.userService.getCurrentAuthUser().subscribe(data => {
+      this.currentUser = data.userName;
+      console.log("current user data -> " + this.currentUser)
+      console.log("profile user data -> " + this.username)
+      this.isCurrentUser = this.currentUser === this.username;
+      console.log("iscurrentuser " + this.isCurrentUser)
+    });
   }
 
   username : string;
   mainCategories:CategoryDto[];
   experienceList:ExperienceDto[];
+  currentUser: string; // The authenticated user
+  userProfile: string; // The user whose profile is being viewed
+  isCurrentUser: boolean;
 
   getAllCategories(){
     this.categoryService.getMainCategories().subscribe(data => {
